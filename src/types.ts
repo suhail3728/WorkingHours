@@ -5,7 +5,7 @@ import { RouteProp } from '@react-navigation/native';
 export type AppScreens = {
   SignIn: undefined;
   SignUp: undefined;
-  Home: { email: string | null };
+  Home: { userId: string | null };
 };
 
 export type HomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Home'>;
