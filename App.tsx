@@ -1,47 +1,38 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, Text, Alert } from 'react-native';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './src/config/firbase';
+import 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator, View } from 'react-native';
+import { NavigationContainer, } from '@react-navigation/native';
+import AuthStack from './src/navigation/authStack';
+import UserStack from './src/navigation/userStack';
+import {auth} from './src/config/firbase'
+import { onAuthStateChanged } from 'firebase/auth';
 
 
-const SignUpScreen = () => {
-  const[email, setEmail] = useState('');
-  const[password, setPassword] = useState('');
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null); 
 
-
-
-  const handleSignUp = async () => {
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setIsAuthenticated(true);
+      } else {
+        // User is signed out
+        setIsAuthenticated(false);
+      }
+    });
   
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth,email, password);
-      const user = userCredential.user;
-      console.log('User Created:', user);
-      Alert.alert('User created successfully horaaaa!');
-    } catch (error ) {
-    console.log(error);
-}
-  };
+    // Cleanup subscription on unmount
+    return unsubscribe;
+  }, []);
 
   return (
-    <View>
-      <TextInput
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-        style={{ margin: 10, padding: 10, borderWidth: 1 }}
-      />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        secureTextEntry
-        onChangeText={setPassword}
-        style={{ margin: 10, padding: 10, borderWidth: 1 }}
-      />
-     
-      <Button title="Sign Up" onPress={handleSignUp} />
-    </View>
+    <NavigationContainer>
+      {isAuthenticated === null ? (
+       <ActivityIndicator size="large" />
+      ): isAuthenticated ? <UserStack /> : <AuthStack />}
+    </NavigationContainer>
   );
-}
+};
 
-export default SignUpScreen;
+export default App;

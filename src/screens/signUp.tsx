@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
+import { View, TextInput, Button, Text, Alert } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firbase'; // Import the auth instance
+import { auth } from '../config/firbase';
+import { SignUpScreenProps } from '../types';
 
-const SignUpScreen = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const SignUpScreen = ({navigation}:SignUpScreenProps) => {
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in successfully
-        const user = userCredential.user;
-        console.log('User signed up:', user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+
+
+  const handleSignUp = async () => {
+  
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth,email, password);
+      const user = userCredential.user;
+      console.log('User Created:', user.email);
+      navigation.navigate('Home',{email : user.email});
+      Alert.alert('User created successfully horaaaa!');
+    } catch (error ) {
+    console.log(error);
+}
   };
 
   return (
@@ -26,18 +30,19 @@ const SignUpScreen = () => {
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        keyboardType="email-address"
+        style={{ margin: 10, padding: 10, borderWidth: 1 }}
       />
       <TextInput
         placeholder="Password"
         value={password}
-        onChangeText={setPassword}
         secureTextEntry
+        onChangeText={setPassword}
+        style={{ margin: 10, padding: 10, borderWidth: 1 }}
       />
-      {error ? <Text>{error}</Text> : null}
+     
       <Button title="Sign Up" onPress={handleSignUp} />
     </View>
   );
-};
+}
 
 export default SignUpScreen;
