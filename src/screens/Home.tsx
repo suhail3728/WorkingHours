@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, ActivityIndicator,StyleSheet } from 'react-native';
+import { View, Text, Button, ActivityIndicator,StyleSheet,  
+  ScrollView,
+
+  SafeAreaView,
+  Platform,
+  StatusBar, } from 'react-native';
 import { signOut } from 'firebase/auth';
 import { auth } from '../config/firbase'; // Make sure this path is correct
 import { HomeScreenProps } from '../types';
 import { getUser } from '../sevices/api';
+
 
 interface UserData {
   email: string;
@@ -58,10 +64,21 @@ const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
   }
 
   return (
-    <View>
-      <Text style={styles.text}>Hey {userData ? userData.name : 'User'}</Text>
+    <SafeAreaView>
+{}
+<ScrollView>
+<View style={styles.header}>
+          <Text style={styles.headerText}>Welcome Back!</Text>
+          <Text style={styles.subHeaderText}> {userData ? userData.name : 'User'} Dashboard</Text>
+        </View>
+ <View>
+      <Text style={styles.text}>Hey </Text>
       <Button title="Logout" onPress={handleLogout} />
     </View>
+    </ScrollView>
+    </SafeAreaView>
+
+   
   );
 };
 
@@ -70,7 +87,21 @@ const styles = StyleSheet.create({
 
     text: {
         color: '#111111'
-    }
+    },
+    header: {
+      padding: 20,
+      backgroundColor: '#f8f9fa',
+    },
+    headerText: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      color: '#333',
+    },
+    subHeaderText: {
+      fontSize: 16,
+      color: '#666',
+      marginTop: 5,
+    },
 });
 
 export default HomeScreen;

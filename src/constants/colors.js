@@ -8,7 +8,9 @@ const Colors = {
     orange: '#FE6809',
     white: '#FEFEFE',
     darkGray:'#4F4F4F',
-    black:'black'
+    black:'black',
+    blue:'#D6E1FF',
+    
     
   };
   
