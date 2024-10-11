@@ -20,8 +20,8 @@ const CustomButton = ({
 const styles = StyleSheet.create({
   button: {
    
-    height: 60,
-    width: 300,
+    height: 50,
+    width: 250,
     borderRadius: 7,
     borderWidth: 2,
     marginVertical: 7,
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 14,
+  
   },
 });
 

@@ -21,7 +21,7 @@ const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
         console.log(`User signed out ${userData?.email}`);
         navigation.reset({
           index: 0,
-          routes: [{ name: 'SignIn' }],
+          routes: [{ name: 'Welcome' }],
         });
       })
       .catch((error) => {
@@ -32,8 +32,8 @@ const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        console.log(`Fetching user data for ID: ${userId}`); // Log userId being fetched
-        const data = await getUser(userId); // Ensure this function is fetching correctly
+        console.log(`Fetching user data for ID: ${userId}`); 
+        const data = await getUser(userId); 
         console.log(data);
         setUserData(data);
         

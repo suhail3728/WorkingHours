@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserCreation1Props,PositionType } from '../types/types';
+import { UserCreation1Props,PositionType } from '../types';
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../constants/colors';
@@ -18,7 +18,7 @@ function UserCreation1({navigation}:UserCreation1Props) {
   };
 
   const handleNextPress = () => {
-    navigation.navigate('UserCreation2', {selectedPosition});
+  console.log('hey')
   };
   
   return (

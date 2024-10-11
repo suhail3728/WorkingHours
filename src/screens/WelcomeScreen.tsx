@@ -4,7 +4,7 @@ import Colors from '../constants/colors';
 
 import CustomButton from '../components/CustomButton';
 import {brand} from '../constants/branding';
-import { WelcomeScreenProps } from '../types/types';
+import { WelcomeScreenProps } from '../types';
 
 const WelcomeScreen = ({navigation}:WelcomeScreenProps) => {
   return (
@@ -22,14 +22,14 @@ const WelcomeScreen = ({navigation}:WelcomeScreenProps) => {
         backgroundColor={Colors.green}
         borderColor={Colors.welcomeScreenBg}
         textColor={Colors.welcomeScreenBg}
-        onPress={() => console.log('Login Pressed')}></CustomButton>
+        onPress={()=> navigation.navigate('SignIn')}></CustomButton>
 
       <CustomButton
         backgroundColor={Colors.gray}
         borderColor={Colors.border}
         title={ "I'm new to " + brand.name}
         onPress={()=> navigation.navigate('NewUser')}
-        textColor={"Colors.#414141"}></CustomButton>
+        textColor={Colors.darkGray}></CustomButton>
         </View>
     </View>
   );
@@ -46,22 +46,22 @@ const styles = StyleSheet.create({
     height:500,
   },
   image: {
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 250,
     marginTop:10,
     marginBottom:0,
 
     
   },
   text: {
-    fontSize: 20,
+    fontSize: 14,
     color: '#414141',
     marginTop:0,
   
   },
   textMessage: {
     color: '#7E7D79',
-    fontSize: 19,
+    fontSize: 14,
    
     textAlign:'center',
     paddingHorizontal: 20,
