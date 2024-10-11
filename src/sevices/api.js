@@ -15,7 +15,14 @@ export const createUser = async (userData) => {
   try {
     const response = await apiService.post('/api/user', {
         email: userData.email,
-        userId: userData.id  
+        userId: userData.id,  
+        name: userData.name,
+        business: userData.business,
+        mobileNumber: userData.mobileNumber,
+        position: userData.position,
+        adress: userData.address,
+        businessType: userData.businessType,
+        numberOfEmployees: userData.numberOfEmployees,
       });
 
     return {

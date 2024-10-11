@@ -9,6 +9,12 @@ interface UserData {
   email: string;
   userId: string;
   timestamp: any;
+  name: string;
+  business:string;
+  mobilenumber:string,
+  positon: string,
+  adress: string,
+  numofemploys: string,
 }
 
 const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
@@ -21,7 +27,7 @@ const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
         console.log(`User signed out ${userData?.email}`);
         navigation.reset({
           index: 0,
-          routes: [{ name: 'Welcome' }],
+          routes: [{ name: 'WelcomeScreen' }],
         });
       })
       .catch((error) => {
@@ -53,7 +59,7 @@ const HomeScreen = ({ route, navigation }: HomeScreenProps) => {
 
   return (
     <View>
-      <Text style={styles.text}>Hey {userData ? userData.email : 'User'}</Text>
+      <Text style={styles.text}>Hey {userData ? userData.name : 'User'}</Text>
       <Button title="Logout" onPress={handleLogout} />
     </View>
   );

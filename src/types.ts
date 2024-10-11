@@ -8,7 +8,7 @@ export type AppScreens = {
   UserCreation1:undefined;
   UserCreation2:{ selectedPosition: PositionType | null };
   UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
-  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,selectedNumOfEmployees:string}
+  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, address:string, businessType:string,selectedNumOfEmployees:string}
   
   SignIn: {email: null};
   SignUp: undefined;

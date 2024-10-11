@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { UserCreation4Props } from "../types/types";
+import { UserCreation4Props } from "../types";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import Colors from '../constants/colors';
-import { createUser } from "../services/api";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firbase";
+import { createUser } from "../sevices/api";
+
 
 const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
   const { 
@@ -10,7 +13,7 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
     business, 
     mobileNumber, 
     selectedPosition, 
-    adress, 
+    address, 
     businessType, 
     selectedNumOfEmployees 
   } = route.params;
@@ -19,47 +22,45 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
   const [password, setPassword] = useState('');
   const isNextButtonEnabled = email.trim() !== '' && password.trim() !== '';
 
-  // Email validation function
-  const isValidEmail = (email: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
+
 
   const handleCreateUser = async () => {
-    // Validate email format
-    if (!isValidEmail(email)) {
-      Alert.alert('Invalid Email', 'Please enter a valid email address');
-      return;
-    }
-
-    // Validate password length
-    if (password.length < 6) {
-      Alert.alert('Weak Password', 'Password should be at least 6 characters long');
-      return;
-    }
-
     try {
-      const userData = {
-        name,
-        business,
-        mobileNumber,
-        position: selectedPosition,
-        adress,
-        businessType,
-        numberOfEmployees: selectedNumOfEmployees,
-        email,
-        password,
-      };
+      const userCredential = await createUserWithEmailAndPassword(auth,email, password);
+      const user = userCredential.user;
+      console.log('User Created:', user.email, user.uid);
+ 
 
-      const response = await createUser(userData);
-      console.log('User created successfully:', response);
+   
       
       // Navigate to Welcome screen
      
+      const userData = {
+        name,
+        id :user.uid, 
+        business,
+        mobileNumber,
+        position: selectedPosition,
+        address,
+        businessType,
+        numberOfEmployees: selectedNumOfEmployees,
+        email,
+        
+      };
+
+      const response = await createUser(userData);
+      navigation.navigate('Home',{userId : user.uid});
+
     } catch (error) {
       console.error('Error creating user:', error);
       Alert.alert('Error','Failed to create account. Please try again.');
     }
-  };
+
+  
+    }
+
+   
+  
 
   return (
     <View style={styles.container}>
@@ -106,7 +107,8 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
       </View>
     </View>
   );
-};
+}
+
 
 
 
