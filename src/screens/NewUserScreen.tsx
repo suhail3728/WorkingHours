@@ -1,21 +1,21 @@
 import React from 'react';
 import {View, Text, Image,  StyleSheet} from 'react-native';
 import {NewUserProps} from '../types';
-import {IconButton} from 'react-native-paper';
 import CustomButton from '../components/CustomButton';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 import Colors from '../constants/colors';
 
 function NewUserScreen({navigation}: NewUserProps) {
   return (
     <View style={styles.container}>
-      <IconButton
-        icon="close"
-        size={24}
-        style={styles.closeButton}
-        onPress={() => navigation.goBack()}
-      />
+     <MaterialIcons 
+  name="close" 
+  size={24} 
+  onPress={() => navigation.goBack()} 
+/>
 
-<Text style={styles.text}>So glad you're here! How can we help you?</Text>
+<Text style={styles.text}>So glad you're here! {"\n"}How can we help you?</Text>
 <Image
         source={require('../assets/images/newuser.png')}
         style={styles.image}
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   text: {
-    fontSize:27,
-    fontWeight:'bold',
+    fontSize:22,
+    fontWeight:'500',
     padding:40,
     color: Colors.darkGray,
     textAlign:'center',
@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
   },
   image: {
 
-    width: 300,
-    height: 300,
-    marginTop:10,
+    width: 200,
+    height: 200,
+    marginTop:60,
     marginBottom:70,
 
 

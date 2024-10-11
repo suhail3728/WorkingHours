@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserCreation3Props } from '../types/types';
+import { UserCreation3Props } from '../types';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Colors from '../constants/colors';
 import { Picker } from '@react-native-picker/picker';

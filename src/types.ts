@@ -6,7 +6,10 @@ export type AppScreens = {
   Welcome:undefined;
   NewUser: undefined;
   UserCreation1:undefined;
-
+  UserCreation2:{ selectedPosition: PositionType | null };
+  UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
+  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,}
+  
   SignIn: undefined;
   SignUp: undefined;
   Home: { userId: string | null };
@@ -16,6 +19,10 @@ export type AppScreens = {
 
 export type HomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Home'>;
 export type HomeScreenRouteProp = RouteProp<AppScreens, 'Home'>;
+export type UserCreation2RouteProp = RouteProp<AppScreens, 'UserCreation2'>;
+export type UserCreation3RouteProp = RouteProp<AppScreens, 'UserCreation3'>;
+export type UserCreation4RouteProp = RouteProp<AppScreens, 'UserCreation4'>;
+
 
 export type HomeScreenProps = {
   navigation: HomeScreenNavigationProp;
@@ -27,6 +34,12 @@ export type SignUpScreenNavigationProp = StackNavigationProp<AppScreens, 'SignUp
 export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
 export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
 export type UserCreation1NavigationProp = StackNavigationProp<AppScreens, 'UserCreation1'>;
+export type UserCreation2NavigationProp = StackNavigationProp<AppScreens, 'UserCreation2'>;
+export type UserCreation3NavigationProp = StackNavigationProp<AppScreens, 'UserCreation3'>;
+
+export type UserCreation4NavigationProp = StackNavigationProp<AppScreens, 'UserCreation4'>;
+
+
 
 
 
@@ -40,6 +53,18 @@ export type NewUserProps = {
 export type UserCreation1Props = {
      navigation: UserCreation1NavigationProp;
      };
+ export type UserCreation2Props = {
+  route:UserCreation2RouteProp;
+      navigation: UserCreation2NavigationProp;
+      };
+      export type UserCreation3Props = {
+        route:UserCreation3RouteProp;
+            navigation: UserCreation3NavigationProp;
+            };
+            export type UserCreation24Props = {
+              route:UserCreation4RouteProp;
+                  navigation: UserCreation4NavigationProp;
+                  };
 
 export type SignInScreenProps = {
   navigation: SignInScreenNavigationProp;
@@ -48,6 +73,7 @@ export type SignInScreenProps = {
 export type SignUpScreenProps = {
   navigation: SignUpScreenNavigationProp;
 };
+
 
 
 

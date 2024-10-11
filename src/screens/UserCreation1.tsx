@@ -18,7 +18,7 @@ function UserCreation1({navigation}:UserCreation1Props) {
   };
 
   const handleNextPress = () => {
-  console.log('hey')
+  navigation.navigate('UserCreation2',{selectedPosition});
   };
   
   return (
@@ -38,6 +38,7 @@ function UserCreation1({navigation}:UserCreation1Props) {
           </TouchableOpacity>
         ))}
       </View>
+   
       
       <TouchableOpacity
         style={[
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'center',
     color:Colors.black,
   },
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   },
   nextButtonText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   nextButtonTextDisabled: {

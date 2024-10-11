@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { UserCreation2Props } from '../types/types';
+import { UserCreation2Props } from '../types';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import Colors from '../constants/colors';
 
