@@ -3,14 +3,14 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 
 export type AppScreens = {
-  Welcome:undefined;
+  WelcomeScreen:undefined;
   NewUser: undefined;
   UserCreation1:undefined;
   UserCreation2:{ selectedPosition: PositionType | null };
   UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
-  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,}
+  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, adress:string, businessType:string,selectedNumOfEmployees:string}
   
-  SignIn: undefined;
+  SignIn: {email: null};
   SignUp: undefined;
   Home: { userId: string | null };
 };
@@ -31,8 +31,8 @@ export type HomeScreenProps = {
 
 export type SignInScreenNavigationProp = StackNavigationProp<AppScreens, 'SignIn'>;
 export type SignUpScreenNavigationProp = StackNavigationProp<AppScreens, 'SignUp'>;
-export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
-export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
+export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'WelcomeScreen'>;
+export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'WelcomeScreen'>;
 export type UserCreation1NavigationProp = StackNavigationProp<AppScreens, 'UserCreation1'>;
 export type UserCreation2NavigationProp = StackNavigationProp<AppScreens, 'UserCreation2'>;
 export type UserCreation3NavigationProp = StackNavigationProp<AppScreens, 'UserCreation3'>;
@@ -61,7 +61,7 @@ export type UserCreation1Props = {
         route:UserCreation3RouteProp;
             navigation: UserCreation3NavigationProp;
             };
-            export type UserCreation24Props = {
+            export type UserCreation4Props = {
               route:UserCreation4RouteProp;
                   navigation: UserCreation4NavigationProp;
                   };

@@ -10,21 +10,23 @@ import UserCreation3 from '../screens/UserCreation3';
 
 
 import NewUserScreen from '../screens/NewUserScreen';
+import { AppScreens } from '../types';
+import UserCreation4 from '../screens/UserCreation4';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<AppScreens>();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator initialRouteName='WelcomScreen'>
+    <Stack.Navigator initialRouteName='WelcomeScreen'>
                     <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}  options={{headerShown: false}} />
                     <Stack.Screen name="NewUser" component={NewUserScreen}  options={{headerShown: false}} />
 
                     <Stack.Screen name="UserCreation1" component={UserCreation1}       options={{ title: 'Step 1 of 4'}} />
                     <Stack.Screen name="UserCreation2" component={UserCreation2}       options={{ title: 'Step 2 of 4'}} />
 
-                    <Stack.Screen name="UserCreation3" componenType '({ route, navigation }: UserCreation3Props) => Element' is not assignable to type 'ScreenComponentType<ParamListBase, "UserCreation3"> | undefined'.
-                    t={UserCreation3}       options={{ title: 'Step 3 of 4'}} />
+                    <Stack.Screen name="UserCreation3" component={UserCreation3}       options={{ title: 'Step 3 of 4'}} />
 
+                    <Stack.Screen name="UserCreation4" component={UserCreation4}       options={{ title: 'Step 4 of 4'}} />
 
               <Stack.Screen name="SignUp" component={SignUpScreen}  />
 

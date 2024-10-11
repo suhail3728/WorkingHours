@@ -70,7 +70,9 @@ function UserCreation3({ route, navigation }: UserCreation3Props) {
               {businessTypes.map((type, index) => (
                 <Picker.Item key={index} label={type.label} value={type.value} />
               ))}
+             
             </Picker>
+            
           </View>
         </View>
       </View>
@@ -168,6 +170,7 @@ const styles = StyleSheet.create({
   pickerItem: {
     fontSize: 16,
     paddingVertical: 10, 
+    color:Colors.black,
   },
   picker: {
     flex: 1,

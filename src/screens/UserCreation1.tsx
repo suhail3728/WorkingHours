@@ -18,8 +18,9 @@ function UserCreation1({navigation}:UserCreation1Props) {
   };
 
   const handleNextPress = () => {
-  navigation.navigate('UserCreation2',{selectedPosition});
+    navigation.navigate('UserCreation2', {selectedPosition});
   };
+  
   
   return (
     <View style={styles.container}>
