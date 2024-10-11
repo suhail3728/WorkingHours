@@ -13,6 +13,9 @@ export type AppScreens = {
   SignIn: {email: null};
   SignUp: undefined;
   Home: { userId: string | null };
+  Shifts: undefined;
+  Chat:undefined;
+  Option:undefined;
 };
  export  type PositionType = 'Manager' | 'Owner/Operator' | 'Employee' | 'Other';
 
@@ -36,13 +39,7 @@ export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'WelcomeScre
 export type UserCreation1NavigationProp = StackNavigationProp<AppScreens, 'UserCreation1'>;
 export type UserCreation2NavigationProp = StackNavigationProp<AppScreens, 'UserCreation2'>;
 export type UserCreation3NavigationProp = StackNavigationProp<AppScreens, 'UserCreation3'>;
-
 export type UserCreation4NavigationProp = StackNavigationProp<AppScreens, 'UserCreation4'>;
-
-
-
-
-
 
 export type WelcomeScreenProps = {
   navigation: WelcomeScreenNavigationProp;
@@ -73,6 +70,25 @@ export type SignInScreenProps = {
 export type SignUpScreenProps = {
   navigation: SignUpScreenNavigationProp;
 };
+
+
+
+//user screens navigation 
+export type ShiftsNavigationProp = StackNavigationProp<AppScreens, 'Shifts'>;
+export type ShiftsProps = {
+  navigation: ShiftsNavigationProp;
+};
+
+
+
+
+
+
+
+
+
+
+
 
 
 
