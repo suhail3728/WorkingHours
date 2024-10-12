@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {signOut} from 'firebase/auth';
 import {auth} from '../config/firbase'; // Make sure this path is correct
 import {HomeScreenProps} from '../types';
@@ -75,8 +76,11 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.blue} />
       <ScrollView style={styles.scrollView}>
+        {/* header section */}
         <View style={styles.header}>
           <View style={styles.greeting}>
+         
+         
             <View style={styles.greetingCard}>
               <View style={styles.iconContainer}>
                 <Icon name="person" size={40} color={Colors.darkGreen} />
@@ -99,9 +103,24 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
             </TouchableOpacity>
            
           </View>
+          <Text style={styles.title}>You have the day off--{"\n"}stay safe!</Text>
+
+          <TouchableOpacity style={styles.shiftPoolButton} onPress={() => console.log('Button Pressed')}>
+      <View style={styles.shiftPoolContent}>
+    
+        <View>
+          <Text style={{color:Colors.darkGray, fontSize:18, marginBottom:1,}}>Find Shifts</Text>
+          <Text style={{color:Colors.darkGray,}}>Take a peek in the Shift{"\n"} Pool!</Text>
+        </View>
+        <Icon2 name="duck" size={60} color="#EF5D60"  />
+      </View>
+    </TouchableOpacity>
        
         </View>
-        <View style={styles.shifts}></View>
+        {/* shift details section */}
+        <View style={styles.shiftDetails}>
+
+        </View>
         <View>
           <Text style={styles.text}>Hey </Text>
           <Button title="Logout" onPress={handleLogout} />
@@ -115,7 +134,7 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: Colors.white,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+   
   },
 
   scrollView: {
@@ -131,9 +150,19 @@ const styles = StyleSheet.create({
   },
   header: {
     height: height * 0.5,
-
+    display:'flex',
+    flexDirection:'column',
     flex: 1,
     backgroundColor: Colors.blue,
+  },
+
+  title: {
+    fontSize: 28,
+    fontWeight: '400',
+    marginTop:20,
+    marginBottom: 20,
+   
+    color: Colors.darkGray,
   },
 
   greeting: {
@@ -183,10 +212,28 @@ const styles = StyleSheet.create({
 
   },
 
+  shiftPoolButton:{
+
+
+
+  },
+
+  shiftPoolContent:{
+    borderWidth:2,
+borderColor:Colors.mediumGray,
+    display: 'flex',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor:Colors.pureWhite,
+    padding:20,
+    borderRadius:10,
+  },
+
   //header section ends
 
   // shift details section
-  shifts: {
+  shiftDetails: {
+    
     flex: 1,
     backgroundColor: Colors.orange,
     height: height * 0.6,

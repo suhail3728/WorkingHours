@@ -4,6 +4,7 @@ const Colors = {
     welcomeScreenBg: '#F1F0EC', 
     green:'#3ABEA9', 
     gray: '#F3F3F3',
+    mediumGray:'#D1D6DC',
     border: '#DAD9D7',
     orange: '#FE6809',
     white: '#FEFEFE',
