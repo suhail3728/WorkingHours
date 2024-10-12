@@ -17,8 +17,8 @@ const Stack = createStackNavigator<AppScreens>();
 
 const AuthStack = () => {
   return (
-    <Stack.Navigator initialRouteName='WelcomeScreen'>
-                    <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}  options={{headerShown: false}} />
+    <Stack.Navigator initialRouteName='Welcome'>
+                    <Stack.Screen name="Welcome" component={WelcomeScreen}  options={{headerShown: false}} />
                     <Stack.Screen name="NewUser" component={NewUserScreen}  options={{headerShown: false}} />
 
                     <Stack.Screen name="UserCreation1" component={UserCreation1}       options={{ title: 'Step 1 of 4'}} />

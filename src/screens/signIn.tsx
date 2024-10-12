@@ -21,9 +21,20 @@ const SignInScreen: React.FC<SignInScreenProps> = ({ navigation }) => {
       
 
       
-      console.log(`User signed in:${user.uid}`);
+      console.log(`User signed in:${user.uid, user.email}`);
 
-      navigation.navigate('Home',{userId : user.uid});
+      navigation.reset({
+        index: 0,
+        routes: [
+          {
+            name: 'MainTab',
+            params: {
+              screen: 'Home',
+              params: { userId: user.uid }
+            }
+          }
+        ],
+      });
 
 
   };

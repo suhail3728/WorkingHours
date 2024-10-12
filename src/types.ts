@@ -3,18 +3,18 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 
 export type AppScreens = {
-  WelcomeScreen:undefined;
+  Welcome:undefined;
   NewUser: undefined;
   UserCreation1:undefined;
   UserCreation2:{ selectedPosition: PositionType | null };
   UserCreation3:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null};
-  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, address:string, businessType:string,selectedNumOfEmployees:string}
+  UserCreation4:{name:string, business: string, mobileNumber?:string, selectedPosition: PositionType|null, address:string, businessType:string, selectedNumOfEmployees: string}
   
-  SignIn: {email: null};
+  SignIn: {email:null};
   SignUp: undefined;
   Home: { userId: string | null };
-  Shifts: undefined;
-  Chat:undefined;
+  Chat: undefined;
+  Shifts:undefined;
   Option:undefined;
 };
  export  type PositionType = 'Manager' | 'Owner/Operator' | 'Employee' | 'Other';
@@ -34,12 +34,18 @@ export type HomeScreenProps = {
 
 export type SignInScreenNavigationProp = StackNavigationProp<AppScreens, 'SignIn'>;
 export type SignUpScreenNavigationProp = StackNavigationProp<AppScreens, 'SignUp'>;
-export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'WelcomeScreen'>;
-export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'WelcomeScreen'>;
+export type WelcomeScreenNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
+export type NewUserNavigationProp = StackNavigationProp<AppScreens, 'Welcome'>;
 export type UserCreation1NavigationProp = StackNavigationProp<AppScreens, 'UserCreation1'>;
 export type UserCreation2NavigationProp = StackNavigationProp<AppScreens, 'UserCreation2'>;
 export type UserCreation3NavigationProp = StackNavigationProp<AppScreens, 'UserCreation3'>;
+
 export type UserCreation4NavigationProp = StackNavigationProp<AppScreens, 'UserCreation4'>;
+
+
+
+
+
 
 export type WelcomeScreenProps = {
   navigation: WelcomeScreenNavigationProp;
@@ -70,25 +76,6 @@ export type SignInScreenProps = {
 export type SignUpScreenProps = {
   navigation: SignUpScreenNavigationProp;
 };
-
-
-
-//user screens navigation 
-export type ShiftsNavigationProp = StackNavigationProp<AppScreens, 'Shifts'>;
-export type ShiftsProps = {
-  navigation: ShiftsNavigationProp;
-};
-
-
-
-
-
-
-
-
-
-
-
 
 
 
