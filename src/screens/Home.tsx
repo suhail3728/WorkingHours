@@ -77,20 +77,29 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
           <View style={styles.greeting}>
-            <View>
-              <View  style={styles.iconContainer} >
-              <Icon name='person' size={40} color={Colors.darkGreen}/>
+            <View style={styles.greetingCard}>
+              <View style={styles.iconContainer}>
+                <Icon name="person" size={40} color={Colors.darkGreen} />
               </View>
-            
+              <View>
+                <View style={styles.date}>
+                <Text style={{color:Colors.darkGray ,fontSize:12}}>Fri, Oct 11</Text>
+                <Icon name='cloud-queue' color={Colors.darkGray}/>
+                <Text style={{color:Colors.darkGray ,fontSize:12}}>14</Text>
+                </View>
+               
+                <Text style={styles.headerText}>
+                Good afternoon, {"\n"}
+              {userData ? userData.name : 'User'} 
+            </Text>
+              </View>
             </View>
             <TouchableOpacity onPress={() => console.log('notifications')}>
-              <Icon name="notifications-none" size={20} color="#900" />
+              <Icon name="notifications-none" size={30} color={Colors.darkGray} />
             </TouchableOpacity>
-            <Text style={styles.subHeaderText}>
-              {userData ? userData.name : 'User'} Dashboard
-            </Text>
+           
           </View>
-          <Text style={styles.headerText}>Welcome Back!</Text>
+       
         </View>
         <View style={styles.shifts}></View>
         <View>
@@ -131,15 +140,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
+  greetingCard:{
+
+    display: 'flex',
+    gap: 7,
+    flexDirection: 'row',
+    justifyContent:'space-evenly',
+    alignItems:'center',
+    
+
+  },
   notificationButton: {
     borderRadius: 50,
     padding: 10,
   },
 
   headerText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333',
+    fontSize: 18,
+    fontWeight: '400',
+    color: Colors.black,
   },
   subHeaderText: {
     fontSize: 16,
@@ -149,11 +169,18 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 45,
     height: 45,
-    borderRadius: 25, 
-    backgroundColor: '#F7FAF3', 
+    borderRadius: 25,
+    backgroundColor: '#F7FAF3',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
+  },
+  date:{
+    display:'flex',
+    flexDirection:'row',
+    gap:3,
+    alignContent:'center'
+
   },
 
   //header section ends
