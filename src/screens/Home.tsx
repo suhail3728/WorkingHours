@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 28,
+    fontSize: 25,
     fontWeight: '400',
     marginTop:20,
     marginBottom: 20,
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   },
 
   headerText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '400',
     color: Colors.black,
   },
@@ -235,9 +235,11 @@ borderColor:Colors.mediumGray,
   shiftDetails: {
     
     flex: 1,
-    backgroundColor: Colors.orange,
+    backgroundColor: Colors.pureWhite,
     height: height * 0.6,
+    margin:-30,
   },
+
 });
 
 export default HomeScreen;
