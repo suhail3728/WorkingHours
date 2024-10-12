@@ -77,7 +77,12 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
           <View style={styles.greeting}>
-            <View></View>
+            <View>
+              <View  style={styles.iconContainer} >
+              <Icon name='person' size={40} color={Colors.darkGreen}/>
+              </View>
+            
+            </View>
             <TouchableOpacity onPress={() => console.log('notifications')}>
               <Icon name="notifications-none" size={20} color="#900" />
             </TouchableOpacity>
@@ -140,6 +145,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666',
     marginTop: 5,
+  },
+  iconContainer: {
+    width: 45,
+    height: 45,
+    borderRadius: 25, 
+    backgroundColor: '#F7FAF3', 
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 10,
   },
 
   //header section ends

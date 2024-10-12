@@ -11,6 +11,7 @@ const Colors = {
     darkGray:'#4F4F4F',
     black:'black',
     blue:'#D6E1FF',
+    darkGreen: '#BBC994',
     
     
   };
