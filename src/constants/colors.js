@@ -7,6 +7,7 @@ const Colors = {
     border: '#DAD9D7',
     orange: '#FE6809',
     white: '#FEFEFE',
+    pureWhite:'#FFFFFF',
     darkGray:'#4F4F4F',
     black:'black',
     blue:'#D6E1FF',
