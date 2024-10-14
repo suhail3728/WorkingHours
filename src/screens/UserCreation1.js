@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { UserCreation1Props,PositionType } from '../types';
+
 
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Colors from '../constants/colors';
-const positions: PositionType[] = [
+const positions = [
   'Owner/Operator',
   'Manager',
   'Employee',
   'Other'
 ];
 
-function UserCreation1({navigation}:UserCreation1Props) {
-  const [selectedPosition, setSelectedPosition] = useState<PositionType | null>(null);
+function UserCreation1({navigation}) {
+  const [selectedPosition, setSelectedPosition] = useState(null);
 
-  const handlePositionSelect = (position: PositionType) => {
+  const handlePositionSelect = (position) => {
     setSelectedPosition(position);
   };
 

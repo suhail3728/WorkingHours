@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { UserCreation2Props } from '../types';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import Colors from '../constants/colors';
 
-function UserCreation2({route, navigation }: UserCreation2Props) {
+function UserCreation2({route, navigation }) {
   const {selectedPosition} = route.params;
   const [name, setName] = useState('');
   const [business, setBusiness] = useState('');

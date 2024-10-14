@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, Alert , StyleSheet} from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../config/firbase';
-import { SignUpScreenProps } from '../types';
+import { auth } from '../config/firebase';
+
 import { createUser } from '../sevices/api';
 
-const SignUpScreen = ({navigation}:SignUpScreenProps) => {
+const SignUpScreen = ({navigation}) => {
   const[email, setEmail] = useState('');
   const[password, setPassword] = useState('');
 

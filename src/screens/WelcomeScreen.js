@@ -4,9 +4,9 @@ import Colors from '../constants/colors';
 
 import CustomButton from '../components/CustomButton';
 import {brand} from '../constants/branding';
-import { WelcomeScreenProps } from '../types';
 
-const WelcomeScreen = ({navigation}:WelcomeScreenProps) => {
+
+const WelcomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
        

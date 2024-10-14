@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {
   View,
   Text,
@@ -15,27 +15,18 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {signOut} from 'firebase/auth';
-import {auth} from '../config/firbase'; // Make sure this path is correct
-import {HomeScreenProps} from '../types';
+import {auth} from '../config/firebase'; 
 import {getUser} from '../sevices/api';
 import Colors from '../constants/colors';
+import { AuthContext } from '../navigation/AuthContext';
+
 
 const {height} = Dimensions.get('window');
-interface UserData {
-  email: string;
-  userId: string;
-  timestamp: any;
-  name: string;
-  business: string;
-  mobilenumber: string;
-  positon: string;
-  adress: string;
-  numofemploys: string;
-}
 
-const HomeScreen = ({route, navigation}: HomeScreenProps) => {
-  const userId = route.params?.userId ?? 'User';
-  const [userData, setUserData] = useState<UserData | null>(null);
+
+const HomeScreen = ( {navigation}) => {
+  const { userId } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const handleLogout = () => {
     signOut(auth)
@@ -54,7 +45,7 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
   useEffect(() => {
     const loadUserData = async () => {
       try {
-        console.log(`Fetching user data for ID: ${userId}`);
+        console.log(userId);
         const data = await getUser(userId);
         console.log(data);
         setUserData(data);
@@ -119,12 +110,14 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
         </View>
         {/* shift details section */}
         <View style={styles.shiftDetails}>
-
+        <Button title="Logout" onPress={handleLogout} />
         </View>
         <View>
           <Text style={styles.text}>Hey </Text>
-          <Button title="Logout" onPress={handleLogout} />
+       
         </View>
+    
+        
       </ScrollView>
     </SafeAreaView>
   );

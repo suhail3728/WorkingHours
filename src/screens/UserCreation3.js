@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-nativ
 import Colors from '../constants/colors';
 import { Picker } from '@react-native-picker/picker';
 
-const numOfEmplys: string[] = [
+const numOfEmplys = [
   '<20',
   '20-50',
   '50-80',
@@ -19,20 +19,20 @@ const businessTypes = [
   { label: 'Other', value: 'Other' }
 ];
 
-function UserCreation3({ route, navigation }: UserCreation3Props) {
+function UserCreation3({ route, navigation }) {
   const { name, business, mobileNumber, selectedPosition } = route.params;
-  const [adress, setAdress] = useState('');
+  const [address, setAdress] = useState('');
   const [businessType, setBusinessType] = useState(null);
   const [selectedNumOfEmployees, setSelectedNumOfEmployees] = useState(''); 
 
   const isNextButtonEnabled = 
-    adress.trim() !== '' && 
+    address.trim() !== '' && 
     businessType !== null && 
     selectedNumOfEmployees.trim() !== ''; 
 
     const handleNextPress = () => {
       if (isNextButtonEnabled) {
-        navigation.navigate('UserCreation4',{name, business, mobileNumber,selectedPosition,adress,businessType, selectedNumOfEmployees});
+        navigation.navigate('UserCreation4',{name, business, mobileNumber,selectedPosition,address,businessType, selectedNumOfEmployees});
       } else {
         console.log('Please fill in all required fields');
         
@@ -50,7 +50,7 @@ function UserCreation3({ route, navigation }: UserCreation3Props) {
           <TextInput
             style={styles.input}
             placeholder="Address"
-            value={adress}
+            value={address}
             onChangeText={setAdress}
           />
         </View>

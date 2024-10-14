@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { UserCreation4Props } from "../types";
+import React, { useState,  useContext } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import Colors from '../constants/colors';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firbase";
+import { auth } from "../config/firebase";
 import { createUser } from "../sevices/api";
 
 
-const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
+const UserCreation4 = ({ navigation, route }) => {
   const { 
     name, 
     business, 
@@ -21,6 +20,8 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isNextButtonEnabled = email.trim() !== '' && password.trim() !== '';
+  const { setUserId } = useContext(AuthContext);
+
 
 
 
@@ -29,7 +30,7 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
       const userCredential = await createUserWithEmailAndPassword(auth,email, password);
       const user = userCredential.user;
       console.log('User Created:', user.email, user.uid);
- 
+      setUserId(user.uid);
 
    
       
@@ -49,7 +50,7 @@ const UserCreation4 = ({ navigation, route }: UserCreation4Props) => {
       };
 
       const response = await createUser(userData);
-      navigation.navigate('Home',{userId : user.uid});
+      navigation.navigate('HomeScreen');
 
     } catch (error) {
       console.error('Error creating user:', error);

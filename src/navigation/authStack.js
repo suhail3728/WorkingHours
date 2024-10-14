@@ -2,19 +2,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from '../screens/SignUp';
-import SignInScreen from '../screens/SignIn';
+import SignInScreen from '../screens/signIn';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import UserCreation1 from '../screens/UserCreation1';
 import UserCreation2 from '../screens/UserCreation2';
 import UserCreation3 from '../screens/UserCreation3';
-
-
 import NewUserScreen from '../screens/NewUserScreen';
-import { AppScreens } from '../types';
 import UserCreation4 from '../screens/UserCreation4';
-
-const Stack = createStackNavigator<AppScreens>();
-
+const Stack = createStackNavigator();
 const AuthStack = () => {
   return (
     <Stack.Navigator initialRouteName='Welcome'>
