@@ -1,4 +1,3 @@
-import { black } from "react-native-paper/lib/typescript/styles/themes/v2/colors";
 
 const Colors = {
     welcomeScreenBg: '#F1F0EC', 
@@ -10,9 +9,12 @@ const Colors = {
     white: '#FEFEFE',
     pureWhite:'#FFFFFF',
     darkGray:'#4F4F4F',
-    black:'black',
+    black:'#2F2F2F',
+    darkBlue:'#7A8BC1',
     blue:'#D6E1FF',
     darkGreen: '#BBC994',
+    lessGray: '#6E6E6E',
+    pink:'#C166AC',
     
     
   };

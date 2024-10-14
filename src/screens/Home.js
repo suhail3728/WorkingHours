@@ -15,17 +15,15 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {signOut} from 'firebase/auth';
-import {auth} from '../config/firebase'; 
+import {auth} from '../config/firebase';
 import {getUser} from '../sevices/api';
 import Colors from '../constants/colors';
-import { AuthContext } from '../navigation/AuthContext';
-
+import {AuthContext} from '../navigation/AuthContext';
 
 const {height} = Dimensions.get('window');
 
-
-const HomeScreen = ( {navigation}) => {
-  const { userId } = useContext(AuthContext);
+const HomeScreen = ({navigation}) => {
+  const {userId} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const handleLogout = () => {
@@ -70,54 +68,197 @@ const HomeScreen = ( {navigation}) => {
         {/* header section */}
         <View style={styles.header}>
           <View style={styles.greeting}>
-         
-         
             <View style={styles.greetingCard}>
               <View style={styles.iconContainer}>
                 <Icon name="person" size={40} color={Colors.darkGreen} />
               </View>
               <View>
                 <View style={styles.date}>
-                <Text style={{color:Colors.darkGray ,fontSize:12}}>Fri, Oct 11</Text>
-                <Icon name='cloud-queue' color={Colors.darkGray}/>
-                <Text style={{color:Colors.darkGray ,fontSize:12}}>14</Text>
+                  <Text style={{color: Colors.darkGray, fontSize: 12}}>
+                    Fri, Oct 11
+                  </Text>
+                  <Icon name="cloud-queue" color={Colors.darkGray} />
+                  <Text style={{color: Colors.darkGray, fontSize: 12}}>14</Text>
                 </View>
-               
+
                 <Text style={styles.headerText}>
-                Good afternoon, {"\n"}
-              {userData ? userData.name : 'User'} 
-            </Text>
+                  Good afternoon, {'\n'}
+                  {userData ? userData.name : 'User'}
+                </Text>
               </View>
             </View>
             <TouchableOpacity onPress={() => console.log('notifications')}>
-              <Icon name="notifications-none" size={30} color={Colors.darkGray} />
+              <Icon
+                name="notifications-none"
+                size={30}
+                color={Colors.darkGray}
+              />
             </TouchableOpacity>
-           
           </View>
-          <Text style={styles.title}>You have the day off--{"\n"}stay safe!</Text>
+          <Text style={styles.title}>
+            You have the day off--{'\n'}stay safe!
+          </Text>
 
-          <TouchableOpacity style={styles.shiftPoolButton} onPress={() => console.log('Button Pressed')}>
-      <View style={styles.shiftPoolContent}>
-    
-        <View>
-          <Text style={{color:Colors.darkGray, fontSize:18, marginBottom:1,}}>Find Shifts</Text>
-          <Text style={{color:Colors.darkGray,}}>Take a peek in the Shift{"\n"} Pool!</Text>
-        </View>
-        <Icon2 name="duck" size={60} color="#EF5D60"  />
-      </View>
-    </TouchableOpacity>
-       
+          <TouchableOpacity
+            style={styles.shiftPoolButton}
+            onPress={() => console.log('Button Pressed')}>
+            <View style={styles.shiftPoolContent}>
+              <View>
+                <Text
+                  style={{
+                    color: Colors.darkGray,
+                    fontSize: 18,
+                    marginBottom: 1,
+                  }}>
+                  Find Shifts
+                </Text>
+                <Text style={{color: Colors.darkGray}}>
+                  Take a peek in the Shift{'\n'} Pool!
+                </Text>
+              </View>
+              <Icon2 name="duck" size={60} color="#EF5D60" />
+            </View>
+          </TouchableOpacity>
         </View>
         {/* shift details section */}
         <View style={styles.shiftDetails}>
-        <Button title="Logout" onPress={handleLogout} />
+          <View style={styles.upcomingShifts}>
+            <Text style={{fontSize: 26, color: Colors.darkGray}}>
+              Your upcoming {'\n'}shifts
+            </Text>
+            <TouchableOpacity style={styles.viewAllButton}>
+              <Text
+                style={{color: Colors.orange, fontSize: 16, fontWeight: '500'}}>
+                {' '}
+                View all{' '}
+              </Text>
+            </TouchableOpacity>
+          </View>
+<View style={{display:'flex', flexDirection:'column', gap:10}}>
+
+<View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+              }}>
+              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
+              <Text
+                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
+                15
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
+            </View>
+
+            <View>
+              <Text style={{color: Colors.black, fontSize: 16}}>
+                5:00 pm -- 11:00 pm
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                Crown Isle
+              </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 5,
+                  alignItems: 'center',
+                }}>
+                <Icon name="circle" color={Colors.pink} size={10}></Icon>
+                <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                  Line Cook | Kitchen
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+              }}>
+              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
+              <Text
+                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
+                15
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
+            </View>
+
+            <View>
+              <Text style={{color: Colors.black, fontSize: 16}}>
+                5:00 pm -- 11:00 pm
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                Crown Isle
+              </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 5,
+                  alignItems: 'center',
+                }}>
+                <Icon name="circle" color={Colors.pink} size={10}></Icon>
+                <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                  Line Cook | Kitchen
+                </Text>
+              </View>
+            </View>
+          </View>
+
+
+          <View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+              }}>
+              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
+              <Text
+                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
+                15
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
+            </View>
+
+            <View>
+              <Text style={{color: Colors.black, fontSize: 16}}>
+                5:00 pm -- 11:00 pm
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                Crown Isle
+              </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 5,
+                  alignItems: 'center',
+                }}>
+                <Icon name="circle" color={Colors.pink} size={10}></Icon>
+                <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                  Line Cook | Kitchen
+                </Text>
+              </View>
+            </View>
+          </View>
+
+
+</View>
+         
+          <Button title="Logout" onPress={handleLogout} />
         </View>
         <View>
           <Text style={styles.text}>Hey </Text>
-       
         </View>
-    
-        
       </ScrollView>
     </SafeAreaView>
   );
@@ -127,7 +268,6 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     backgroundColor: Colors.white,
-   
   },
 
   scrollView: {
@@ -143,8 +283,8 @@ const styles = StyleSheet.create({
   },
   header: {
     height: height * 0.5,
-    display:'flex',
-    flexDirection:'column',
+    display: 'flex',
+    flexDirection: 'column',
     flex: 1,
     backgroundColor: Colors.blue,
   },
@@ -152,9 +292,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
     fontWeight: '400',
-    marginTop:20,
+    marginTop: 20,
     marginBottom: 20,
-   
+
     color: Colors.darkGray,
   },
 
@@ -163,15 +303,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  greetingCard:{
-
+  greetingCard: {
     display: 'flex',
     gap: 7,
     flexDirection: 'row',
-    justifyContent:'space-evenly',
-    alignItems:'center',
-    
-
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   notificationButton: {
     borderRadius: 50,
@@ -197,42 +334,42 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 10,
   },
-  date:{
-    display:'flex',
-    flexDirection:'row',
-    gap:3,
-    alignContent:'center'
-
-  },
-
-  shiftPoolButton:{
-
-
-
-  },
-
-  shiftPoolContent:{
-    borderWidth:2,
-borderColor:Colors.mediumGray,
+  date: {
     display: 'flex',
-    flexDirection:'row',
-    justifyContent:'space-between',
-    backgroundColor:Colors.pureWhite,
-    padding:20,
-    borderRadius:10,
+    flexDirection: 'row',
+    gap: 3,
+    alignContent: 'center',
+  },
+
+  shiftPoolButton: {},
+  upcomingShifts: {
+    height: 'auto',
+  },
+  viewAllButton: {
+    alignSelf: 'flex-end',
+  },
+
+  shiftPoolContent: {
+    borderWidth: 2,
+    borderColor: Colors.mediumGray,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: Colors.pureWhite,
+    padding: 20,
+    borderRadius: 10,
   },
 
   //header section ends
 
   // shift details section
   shiftDetails: {
-    
     flex: 1,
     backgroundColor: Colors.pureWhite,
     height: height * 0.6,
-    margin:-30,
+    margin: -30,
+    padding: 30,
   },
-
 });
 
 export default HomeScreen;
