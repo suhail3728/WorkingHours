@@ -24,8 +24,11 @@ function Home() {
     tabBarShowLabel: false,
     tabBarIconStyle: { color: Colors.darkGray }, 
     tabBarShowLabel: false,
-    tabBarActiveTintColor: Colors.orange,  // Color for the active tab
-    tabBarInactiveTintColor: Colors.darkGray,// replace 'blue' with your desired color
+    tabBarActiveTintColor: Colors.orange,  
+    tabBarInactiveTintColor: Colors.darkGray,
+    tabBarStyle: {
+      height:60,
+    }
   }}
     >
     <Tab.Screen name="Home" component={HomeScreen} options={{headerShown :false,
@@ -34,7 +37,7 @@ function Home() {
         ),}} />
       <Tab.Screen name="Shifts" component={ShiftsScreen} options={{headerShown :false,
          tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name="calendar-blank-outline" color={color} size={size} />
+          <MaterialCommunityIcons name="calendar-blank-outline" color={color} size={size}  style={{fontWeight:'100'}}/>
         ),
          
          }} />

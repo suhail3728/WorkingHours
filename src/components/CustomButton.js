@@ -1,6 +1,8 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import Colors from '../constants/colors';
+import MaterialIcon from 'react-native-vector-icons/Ionicons';
+
 
 const CustomButton = ({
   title,
@@ -17,7 +19,7 @@ const CustomButton = ({
   );
 };
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   button: {
    
     height: 50,
@@ -35,4 +37,41 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomButton;
+
+
+export const CustomIconButton = ({
+  name,
+  title,
+  onPress
+}) => {
+
+
+  return (
+<TouchableOpacity
+onPress={onPress}>
+  
+<View
+    style={{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      paddingLeft: 50,
+      gap: 13,
+      paddingVertical: 15,
+    }}>
+    <MaterialIcon
+      name={name}
+      color={Colors.lessGray}
+      size={16}></MaterialIcon>
+    <Text
+      style={{color: Colors.black, fontSize: 15, fontWeight: '500'}}>
+      {title}
+    </Text>
+    </View>
+</TouchableOpacity>
+    
+  );
+
+
+}
+
