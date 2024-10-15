@@ -59,7 +59,7 @@ export const CustomIconButton = ({name, title, onPress}) => {
   );
 };
 
-export const DepartmentButton = ({IconName, IconBackgroundColor, title , onPress, style})=>{
+export const DepartmentButton = ({IconName, IconColor,  IconBackgroundColor, title , onPress, style, IconSize})=>{
 
   return(
 
@@ -76,8 +76,8 @@ export const DepartmentButton = ({IconName, IconBackgroundColor, title , onPress
             }}>
             <MaterialIcon
               name= {IconName}
-              color={Colors.white}
-              size={22}></MaterialIcon>
+              color={IconColor}
+              size={IconSize?IconSize:22}></MaterialIcon>
           </View>
           <Text style={{color:Colors.darkGray}}>{title}</Text>
         </View>
