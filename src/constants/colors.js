@@ -16,6 +16,7 @@ const Colors = {
     lessGray: '#6E6E6E',
     pink:'#C166AC',
     darkerGreen:'#3BBCA6',
+    yellow:'#F3F1C8',
     
     
   };

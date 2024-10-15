@@ -65,6 +65,32 @@ export const getDepartments = async (userId) => {
   
 }
 
+export const addRoles = async (userId, departmentId, roleName) =>{
+  try {
+    const response = await apiService.post(`/api/${userId}/department/${departmentId}/role`,{
+      name: roleName,
+
+    });
+  return response.data;
+  }
+    catch (error) {
+      console.error('Unable to add the role sorry ', error);
+      throw error;
+    }
+  }
+
+  export const getRoles = async(userId, departmentId) => {
+    try {
+      const response = await apiService.get(`/api/${userId}/department/${departmentId}/role`);
+      return response.data;
+    }
+    catch (error){
+      console.error('unable to fetch the roles', error);
+      
+    }
+  };
+
+
 export const getUser = async (userId) => {
     try {
         const response = await apiService.get(`/api/getuser/${userId}`);

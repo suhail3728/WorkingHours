@@ -47,6 +47,7 @@ const Departments = () => {
           <Text style={{color: Colors.black, fontSize: 13}}>EDIT</Text>
         </TouchableOpacity>
       </View>
+      
       <TouchableOpacity>
         <View style={{padding: 25, display:'flex', flexDirection:'row', alignItems:'center', gap:17}}>
           <View

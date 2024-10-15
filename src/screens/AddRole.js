@@ -12,8 +12,8 @@ const AddRole = ({ route, navigation }) => {
     try {
       console.log(userId);
       console.log('department id:',departmentId);
-      const response = await addRole(userId,departmentId, role);
-      console.log('Department added:', response);
+      const response = await addRoles(userId,departmentId, role);
+      console.log('Role added:', response);
       setAddRole(true);
     } catch (error) {
       console.error('Error adding department', error);
