@@ -4,6 +4,7 @@ import Colors from '../constants/colors';
 import { useNavigation } from '@react-navigation/native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import { getUser } from '../sevices/api';
+import { DepartmentButton } from '../components/CustomButton';
 
 
 
@@ -32,25 +33,16 @@ const EditDepartments =  ( {route})  => {
     return (
 
 <View>
-<TouchableOpacity style={{borderBottomColor:Colors.mediumGray, borderBottomWidth:1}}>
-        <View style={{padding: 25, display:'flex', flexDirection:'row', alignItems:'center', gap:17}}>
-          <View
-            style={{
-              height: 45 * 0.8,
-              width: 45 * 0.8,
-              borderRadius: 25,
-              backgroundColor: Colors.darkBlue,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Ionicon
-              name="location-outline"
-              color={Colors.white}
-              size={22}></Ionicon>
-          </View>
-          <Text style={{color:Colors.darkGray}}>{user? user.business:'Eggs and cheese'}</Text>
-        </View>
-      </TouchableOpacity>
+    <DepartmentButton
+    IconBackgroundColor={Colors.darkBlue}
+    IconName={"location-outline"}
+    title={user? user.business:'Eggs and cheese'}
+    
+
+    >
+
+    </DepartmentButton>
+
       <TouchableOpacity style={{borderBottomColor:Colors.mediumGray, borderBottomWidth:1}} onPress={()=>navigation.navigate('AddDepartment', {userId:userId})}>
         <View style={{padding: 20, paddingLeft:50, display:'flex', flexDirection:'row', alignItems:'center', gap:17}}>
         <Ionicon
