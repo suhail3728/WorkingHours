@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { reporter } from '../../metro.config';
 const API_URL = 'http://192.168.0.12:5000/';
 
 const apiService = axios.create({
@@ -88,6 +89,32 @@ export const addRoles = async (userId, departmentId, roleName) =>{
       console.error('unable to fetch the roles', error);
       
     }
+  };
+  
+  export const addEmployee = async (userId, employeeData) =>{
+    try {
+      const response = await apiService.post(`/api/user/${userId}/employee`, employeeData);
+      return response.data;
+    }
+    catch(error) {
+      console.error('Failed to create user: ', error);
+      throw error;
+    }
+  };
+
+  export const getEmployees = async (userId) => {
+
+    try {
+      const response = await apiService.get(`/api/${userId}/employee`);
+    return response.data;
+
+    }
+    catch (error ) {
+      console.error('failed to get employees', error);
+      throw error;
+    }
+
+    
   };
 
 

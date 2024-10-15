@@ -46,7 +46,7 @@ const OptionsStack = () => {
         ),
         }} />
       <Stack.Screen name="MyTeam" component={MyTeamScreen} />
-      <Stack.Screen name="AddMember" component={AddMember} />
+      <Stack.Screen name="AddMember" component={AddMember} options={{headerShown:false}} />
       <Stack.Screen name="AddRole" component={AddRole} options={{headerShown:false}}/>
       <Stack.Screen
   name="AddDepartment"

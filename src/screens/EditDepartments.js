@@ -71,7 +71,13 @@ const EditDepartments = ({route}) => {
             department={item}
             navigation={navigation}
           ></DepartmentItem>
-              
+                <DepartmentButton
+      IconSize={40}
+      IconColor={Colors.lessGray}
+      IconName={'add-circle-outline'}
+      title="Add Roles"
+      onPress={() => navigation.navigate('AddRole', {userId: userId, departmentId:item.id})}
+      style={{paddingLeft: 60}}></DepartmentButton>
       
             </View>
           
@@ -112,13 +118,6 @@ const DepartmentItem = ({userId, department, navigation }) =>{
         IconName={'flower-outline'}
         IconColor={Colors.pureWhite}
         title={department.name}></DepartmentButton>
-          <DepartmentButton
-      IconSize={40}
-      IconColor={Colors.lessGray}
-      IconName={'add-circle-outline'}
-      title="Add Roles"
-      onPress={() => navigation.navigate('AddRole', {userId: userId, departmentId:item.id})}
-      style={{paddingLeft: 60}}></DepartmentButton>
         <FlatList 
         data={roles}
         keyExtractor={(item)=>item.id}
