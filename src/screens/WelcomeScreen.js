@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image,  StyleSheet} from 'react-native';
 import Colors from '../constants/colors';
 
-import CustomButton from '../components/CustomButton';
+import {CustomIconButton,CustomButton} from '../components/CustomButton';
 import {brand} from '../constants/branding';
 
 

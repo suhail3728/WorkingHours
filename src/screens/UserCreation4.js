@@ -4,6 +4,7 @@ import Colors from '../constants/colors';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 import { createUser } from "../sevices/api";
+import { AuthContext } from "../navigation/AuthContext";
 
 
 const UserCreation4 = ({ navigation, route }) => {
@@ -49,7 +50,7 @@ const UserCreation4 = ({ navigation, route }) => {
         
       };
 
-      const response = await createUser(userData);
+await createUser(userData);
       navigation.navigate('HomeScreen');
 
     } catch (error) {

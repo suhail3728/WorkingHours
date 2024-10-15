@@ -18,10 +18,14 @@ import MaterialIcon from 'react-native-vector-icons/Ionicons';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import { CustomIconButton } from '../components/CustomButton';
+import { useNavigation } from '@react-navigation/native';
 
 const {height} = Dimensions.get('window');
 
+
 const OptionScreen = () => {
+    const navigation = useNavigation();
+
   const {userId} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
 
@@ -104,11 +108,19 @@ const OptionScreen = () => {
           <CustomIconButton
         name={'grid-outline'}
         title={'Departments and Roles'}
+        onPress={()=>navigation.navigate( 'Departments' )}
+        ></CustomIconButton>
+          <CustomIconButton
+        name={'people-outline'}
+        title={'My team'}
+        onPress={()=>navigation.navigate('MyTeam')}
         ></CustomIconButton>
            <CustomIconButton
         name={'calendar-outline'}
         title={'Calendar Sync'}
+        
         ></CustomIconButton>
+       
          <CustomIconButton
         name={'help-buoy-outline'}
         title={'Help Articles'}

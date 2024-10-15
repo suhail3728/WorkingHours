@@ -1,12 +1,11 @@
 import React from 'react';
 import {View, Text, Image,  StyleSheet} from 'react-native';
-import {NewUserProps} from '../types';
-import CustomButton from '../components/CustomButton';
+import {CustomButton}from '../components/CustomButton';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../constants/colors';
 
-function NewUserScreen({navigation}: NewUserProps) {
+function NewUserScreen({navigation}) {
   return (
     <View style={styles.container}>
      <MaterialIcons 

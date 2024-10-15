@@ -4,7 +4,7 @@ import Colors from '../constants/colors';
 import MaterialIcon from 'react-native-vector-icons/Ionicons';
 
 
-const CustomButton = ({
+export const CustomButton = ({
   title,
   onPress,
   backgroundColor,
@@ -19,7 +19,7 @@ const CustomButton = ({
   );
 };
 
-export const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   button: {
    
     height: 50,

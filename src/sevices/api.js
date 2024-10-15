@@ -20,7 +20,7 @@ export const createUser = async (userData) => {
         business: userData.business,
         mobileNumber: userData.mobileNumber,
         position: userData.position,
-        adress: userData.address,
+        address: userData.address,
         businessType: userData.businessType,
         numberOfEmployees: userData.numberOfEmployees,
       });
@@ -33,6 +33,23 @@ export const createUser = async (userData) => {
     console.error('Error creating user:', error);
     throw error;
   }
+};
+
+export const addDepartment  = async(userId, department) => {
+  try {
+    
+    const response =  await apiService.post(`/api/user/${userId}/department`, {
+   
+      name: department,
+    });
+    return response.data;
+
+  }
+  catch(error) {
+    console.error('Error adding departement',error);
+    throw error;
+  }
+
 };
 
 export const getUser = async (userId) => {
