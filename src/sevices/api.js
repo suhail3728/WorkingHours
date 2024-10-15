@@ -52,6 +52,19 @@ export const addDepartment  = async(userId, department) => {
 
 };
 
+export const getDepartments = async (userId) => {
+  try{
+
+    const response = await apiService.get(`/api/get_departments/${userId}/departments`);
+  return response.data;
+  }
+  catch (error){
+    console.error('Error fetchinng departments', error);
+    throw error;
+  }
+  
+}
+
 export const getUser = async (userId) => {
     try {
         const response = await apiService.get(`/api/getuser/${userId}`);

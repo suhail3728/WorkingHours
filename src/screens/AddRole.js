@@ -1,34 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native';
 import Colors from '../constants/colors';
-import { addDepartment} from '../sevices/api';
+import { addRoles} from '../sevices/api';
 
-const AddDepartment = ({ route, navigation }) => {
-  const { userId } = route.params;
-  const [department, setDepartment] = useState('');
-  const [departmentAdded, setDepartmentAdded] = useState(false);
+const AddRole = ({ route, navigation }) => {
+  const { userId, departmentId } = route.params;
+  const [role, setRole] = useState('');
+  const [addRole, setAddRole] =useState(false);
 
-  const handleAddDepartment = async () => {
+  const handleAddRole = async () => {
     try {
       console.log(userId);
-      const response = await addDepartment(userId, department);
+      console.log('department id:',departmentId);
+      const response = await addRole(userId,departmentId, role);
       console.log('Department added:', response);
-      setDepartmentAdded(true);
+      setAddRole(true);
     } catch (error) {
       console.error('Error adding department', error);
-      console.log(departmentAdded)
+      console.log(addRole);
     }
   };
 
   useEffect(() => {
-    if (departmentAdded) {
+    if (addRole) {
       navigation.goBack();
     }
-  }, [departmentAdded, navigation]);
+  }, [addRole, navigation]);
 
   return (
     <KeyboardAvoidingView
-    behavior={Platform.OS === "ios" ? "padding" : "height"}
+    behavior={Platform.OS === "android" ? "padding" : "height"}
     style={{ flex: 1 }}
   >
      <View>
@@ -42,8 +43,8 @@ const AddDepartment = ({ route, navigation }) => {
           backgroundColor: Colors.pureWhite,
         }}
       >
-        <Text style={{ color: Colors.darkGray, fontSize: 20 }}>Add Department</Text>
-        <TouchableOpacity onPress={handleAddDepartment}>
+        <Text style={{ color: Colors.darkGray, fontSize: 20 }}>Add Role</Text>
+        <TouchableOpacity onPress={handleAddRole}>
           <Text style={{ color: Colors.black, fontSize: 13 }}>SAVE</Text>
         </TouchableOpacity>
       </View>
@@ -57,13 +58,13 @@ const AddDepartment = ({ route, navigation }) => {
           backgroundColor: Colors.pureWhite,
         }}
       >
-        <Text style={{ color: Colors.darkGray }}>Department Name</Text>
+        <Text style={{ color: Colors.darkGray }}>Role Name</Text>
         <TextInput
           style={{ borderBottomColor: Colors.black, borderBottomWidth: 1, width: 150, padding: 0 }}
           color={Colors.darkGray}
           cursorColor={Colors.orange}
-          value={department}
-          onChangeText={setDepartment}
+          value={role}
+          onChangeText={setRole}
         />
       </View>
     </View>
@@ -73,4 +74,4 @@ const AddDepartment = ({ route, navigation }) => {
   );
 };
 
-export default AddDepartment;
+export default AddRole;

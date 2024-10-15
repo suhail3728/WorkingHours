@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import Colors from '../constants/colors';
-import MaterialIcon from 'react-native-vector-icons/Ionicons';
+import Ionicon from 'react-native-vector-icons/Ionicons';
 
 export const CustomButton = ({
   title,
@@ -47,10 +47,10 @@ export const CustomIconButton = ({name, title, onPress}) => {
           gap: 13,
           paddingVertical: 15,
         }}>
-        <MaterialIcon
+        <Ionicon
           name={name}
           color={Colors.lessGray}
-          size={16}></MaterialIcon>
+          size={16}></Ionicon>
         <Text style={{color: Colors.black, fontSize: 15, fontWeight: '500'}}>
           {title}
         </Text>
@@ -64,7 +64,7 @@ export const DepartmentButton = ({IconName, IconColor,  IconBackgroundColor, tit
   return(
 
     <TouchableOpacity style={{borderBottomColor:Colors.mediumGray, borderBottomWidth:1}} onPress={onPress}>
-        <View style={{padding: 25, display:'flex', flexDirection:'row', alignItems:'center', gap:17, ...style}}>
+        <View style={{padding: 20, display:'flex', flexDirection:'row', alignItems:'center', gap:17, ...style}}>
           <View
             style={{
               height: 45 * 0.8,
@@ -74,10 +74,10 @@ export const DepartmentButton = ({IconName, IconColor,  IconBackgroundColor, tit
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <MaterialIcon
+            <Ionicon
               name= {IconName}
               color={IconColor}
-              size={IconSize?IconSize:22}></MaterialIcon>
+              size={IconSize?IconSize:22}></Ionicon>
           </View>
           <Text style={{color:Colors.darkGray}}>{title}</Text>
         </View>

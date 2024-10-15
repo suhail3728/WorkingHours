@@ -13,6 +13,8 @@ import Departments from '../screens/Departments';
 import EditDepartments from '../screens/EditDepartments';
 import MyTeamScreen from '../screens/MyteamScreen';
 import AddMember from '../screens/AddMember';
+import AddRole from '../screens/AddRole';
+
 import { View, Text, TouchableOpacity } from 'react-native';
 import AddDepartment from '../screens/AddDepartment';
 
@@ -45,6 +47,7 @@ const OptionsStack = () => {
         }} />
       <Stack.Screen name="MyTeam" component={MyTeamScreen} />
       <Stack.Screen name="AddMember" component={AddMember} />
+      <Stack.Screen name="AddRole" component={AddRole} options={{headerShown:false}}/>
       <Stack.Screen
   name="AddDepartment"
   component={AddDepartment}
@@ -65,6 +68,7 @@ function Home() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: Colors.orange,
         tabBarInactiveTintColor: Colors.darkGray,
+        keyboardHidesTabBar: true,
         tabBarStyle: {
           height: 60,
         },
