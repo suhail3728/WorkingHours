@@ -102,6 +102,17 @@ export const addRoles = async (userId, departmentId, roleName) =>{
     }
   };
 
+  export const createShifts = async (userId, shiftData)=>{
+    try {
+      const response = await apiService.post(`/api/user/${userId}/shifts`, shiftData);
+      return response.data;
+    }
+    catch (error) {
+      console.error('Failed to creater user:', error);
+      throw error;
+    }
+  };
+
   export const getEmployees = async (userId) => {
 
     try {

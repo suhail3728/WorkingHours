@@ -17,6 +17,8 @@ const Colors = {
     pink:'#C166AC',
     darkerGreen:'#3BBCA6',
     yellow:'#F3F1C8',
+    darkerBlue: '#7081B9',
+    borderLight: ' #D3D3D3',
     
     
   };

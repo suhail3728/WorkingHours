@@ -15,8 +15,9 @@ import MyTeamScreen from '../screens/MyteamScreen';
 import AddMember from '../screens/AddMember';
 import AddRole from '../screens/AddRole';
 
-import { View, Text, TouchableOpacity } from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import AddDepartment from '../screens/AddDepartment';
+import CreateShifts from '../screens/CreateShifts';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -24,41 +25,64 @@ const Stack = createStackNavigator();
 const OptionsStack = () => {
   return (
     <Stack.Navigator initialRouteName="Option">
-      <Stack.Screen name="Departments" component={Departments} options={{headerShown:false}}/>
+      <Stack.Screen
+        name="Departments"
+        component={Departments}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="Option"
         component={OptionScreen}
         options={{headerShown: false}}
       />
 
-      <Stack.Screen name="EditDepartments" component={EditDepartments} options={{
-        title:'Company Settings',
-        headerStyle:{
-     
-
-        },
-        headerRight: () => (
-          <TouchableOpacity>
-            <View style={{paddingRight:20}}>
-              <Text style={{color:Colors.black, }}>DONE</Text>
-            </View>
-          </TouchableOpacity> 
-        ),
-        }} />
-      <Stack.Screen name="MyTeam" component={MyTeamScreen} />
-      <Stack.Screen name="AddMember" component={AddMember} options={{headerShown:false}} />
-      <Stack.Screen name="AddRole" component={AddRole} options={{headerShown:false}}/>
       <Stack.Screen
-  name="AddDepartment"
-  component={AddDepartment}
-  options={{headerShown:false}}
-/>
-
-
+        name="EditDepartments"
+        component={EditDepartments}
+        options={{
+          title: 'Company Settings',
+          headerStyle: {},
+          headerRight: () => (
+            <TouchableOpacity>
+              <View style={{paddingRight: 20}}>
+                <Text style={{color: Colors.black}}>DONE</Text>
+              </View>
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <Stack.Screen name="MyTeam" component={MyTeamScreen} />
+      <Stack.Screen
+        name="AddMember"
+        component={AddMember}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AddRole"
+        component={AddRole}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AddDepartment"
+        component={AddDepartment}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
 
+const ShiftStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Shift"
+        component={ShiftsScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen name="CreateShifts" component={CreateShifts} />
+    </Stack.Navigator>
+  );
+};
 function Home() {
   return (
     <Tab.Navigator
@@ -85,7 +109,7 @@ function Home() {
       />
       <Tab.Screen
         name="Shifts"
-        component={ShiftsScreen}
+        component={ShiftStack}
         options={{
           headerShown: false,
           tabBarIcon: ({color, size}) => (
