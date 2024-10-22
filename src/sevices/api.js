@@ -113,6 +113,19 @@ export const addRoles = async (userId, departmentId, roleName) =>{
     }
   };
 
+
+  export const getShifts = async(userId) =>{
+    try {
+      const response = await apiService.get(`/api/${userId}/shifts`);
+      console.log(response.data);
+      return response.data;
+     
+    }
+    catch (error) {
+      console.error('failed to get shifts', error);
+      throw error;
+    }
+  }
   export const getEmployees = async (userId) => {
 
     try {

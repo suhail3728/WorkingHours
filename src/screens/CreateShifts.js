@@ -45,6 +45,7 @@ const CreateShifts = () => {
         date: selectedDate,
         start: startTime,
         end: endTime,
+        employee: selectedEmployee,
       });
 
       console.log('shift published', response);
