@@ -6,9 +6,6 @@ import {
   Text,
   StyleSheet,
   Dimensions,
-  Touchable,
-  TouchableOpacity,
-  TouchableHighlight,
 } from 'react-native';
 import Colors from '../constants/colors';
 import {AuthContext} from '../navigation/AuthContext';

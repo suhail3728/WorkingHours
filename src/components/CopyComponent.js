@@ -8,7 +8,7 @@ const CopyBusinessId = ({ businessId }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    if (!businessId) return; // Guard clause for null businessId
+    if (!businessId) return; 
     Clipboard.setString(businessId);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -21,7 +21,7 @@ const CopyBusinessId = ({ businessId }) => {
       style={{
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: Colors.gray, // Using your color scheme
+        backgroundColor: Colors.gray,
         padding: 8,
         borderRadius: 8,
         gap: 8,

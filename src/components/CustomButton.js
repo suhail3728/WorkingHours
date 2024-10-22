@@ -39,7 +39,9 @@ const styles = StyleSheet.create({
 
 export const CustomIconButton = ({name, title, onPress}) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity onPress={onPress}
+    activeOpacity={0.7} 
+    >
       <View
         style={{
           display: 'flex',

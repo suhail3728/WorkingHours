@@ -5,7 +5,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import Colors from '../constants/colors';
 
+
 function NewUserScreen({navigation}) {
+
   return (
     <View style={styles.container}>
      <MaterialIcons 
@@ -27,9 +29,7 @@ function NewUserScreen({navigation}) {
         title={'Create a new team'}></CustomButton>
          <CustomButton
         backgroundColor={Colors.orange}
-        onPress={() => {
-          console.log('Join an existing team');
-        }}
+        onPress={()=> navigation.navigate('Employee')}
         textColor={Colors.white}
         borderColor={Colors.orange}
         title={'Join an existing team'}></CustomButton>

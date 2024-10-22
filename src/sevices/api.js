@@ -151,3 +151,18 @@ export const getUser = async (userId) => {
     }
 };
 
+
+
+/// employee section 
+
+export const verifyUser = async (userId, email) => {
+  try {
+    const response = await apiService.get(`/api/${userId}/verify`, {
+      params: { email }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error verifying user:', error);
+    throw error;
+  }
+};

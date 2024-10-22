@@ -25,10 +25,17 @@ const {height} = Dimensions.get('window');
 
 const HomeScreen = ({navigation}) => {
   const {userId} = useContext(AuthContext);
+  const {setEmplyObject} = useContext(AuthContext);
+  const {setUserId} = useContext(AuthContext);
+
+  const {emplyObject} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const handleLogout = () => {
+    setUserId(null)
+    setEmplyObject(null);
     signOut(auth)
+   
       .then(() => {
         console.log(`User signed out ${userData?.email}`);
         navigation.reset({
@@ -98,6 +105,7 @@ const HomeScreen = ({navigation}) => {
           </View>
           <Text style={styles.title}>
             You have the day off--{'\n'}stay safe!
+            <Text>{emplyObject? emplyObject.employeeData.name: 'i dont know why'}</Text>
           </Text>
 
           <TouchableOpacity

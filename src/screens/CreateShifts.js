@@ -12,7 +12,7 @@ import Colors from '../constants/colors';
 
 import DateTimePicker from '@react-native-community/datetimepicker';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import {createShifts, getDepartments, getEmployees, getRoles} from '../sevices/api';
+import {createShifts, getDepartments, getEmployees, getRoles, getUser} from '../sevices/api';
 import {CustomButton} from '../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
 
@@ -36,6 +36,17 @@ const CreateShifts = () => {
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [showStartTimePicker, setShowStartTimePicker] = useState(false);
   const [showEndTimePicker, setShowEndTimePicker] = useState(false);
+  const [user, setUser] = useState('');
+  const loadUser = async () => {
+    try {
+      console.log(userId);
+      const user = await getUser(userId);
+      setUser(user);
+      console.log(user);
+    } catch (error) {
+      console.error('Error loading userdata', error);
+    }
+  };
 
   const handleAddShifts = async () => {
     try {
@@ -57,6 +68,7 @@ const CreateShifts = () => {
 
   useEffect(() => {
     loadDepartments();
+    loadUser();
   }, [userId]);
 
   const loadDepartments = async () => {
@@ -136,7 +148,7 @@ const CreateShifts = () => {
       <Text style={styles.sectionTitle}>Where</Text>
       <View style={styles.row}>
         <Text style={styles.label}>Location</Text>
-        <Text style={styles.value}>Cheese Biscuits</Text>
+        <Text style={styles.value}>{user ? user.business : 'Eggs and cheese'}</Text>
       </View>
       <View style={styles.row}>
         <Text style={styles.label}>Department</Text>
