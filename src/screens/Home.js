@@ -138,7 +138,13 @@ const HomeScreen = ({navigation}) => {
 <View style={{display:'flex', flexDirection:'column', gap:10}}>
 
   <ShiftCard 
-
+  day={"Monday"}
+  dayInNum={15}
+  department={"Kitchen"}
+  end={"7 PM"}
+ start={"12 PM"}
+ role={"prep/dish"}
+ place={"Crown Isle"}
 
   ></ShiftCard>
 

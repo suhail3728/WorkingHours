@@ -19,6 +19,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {ScrollView} from 'react-native-gesture-handler';
 import { CustomIconButton } from '../components/CustomButton';
 import { useNavigation } from '@react-navigation/native';
+import CopyBusinessId from '../components/CopyComponent';
 
 const {height} = Dimensions.get('window');
 
@@ -65,6 +66,7 @@ const OptionScreen = () => {
             <Text style={{color: Colors.black, fontSize: 18}}>
               {userData ? userData.business : 'Eggs and Cheese'}{' '}
             </Text>
+            <CopyBusinessId businessId={userId ? userId : "#businessId"} />
           </View>
         </View>
 
