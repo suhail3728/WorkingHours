@@ -19,6 +19,7 @@ import {auth} from '../config/firebase';
 import {getUser} from '../sevices/api';
 import Colors from '../constants/colors';
 import {AuthContext} from '../navigation/AuthContext';
+import { ShiftCard } from '../components/CustomButton';
 
 const {height} = Dimensions.get('window');
 
@@ -65,7 +66,7 @@ const HomeScreen = ({navigation}) => {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.blue} />
       <ScrollView style={styles.scrollView}>
-        {/* header section */}
+  
         <View style={styles.header}>
           <View style={styles.greeting}>
             <View style={styles.greetingCard}>
@@ -120,7 +121,7 @@ const HomeScreen = ({navigation}) => {
             </View>
           </TouchableOpacity>
         </View>
-        {/* shift details section */}
+  
         <View style={styles.shiftDetails}>
           <View style={styles.upcomingShifts}>
             <Text style={{fontSize: 26, color: Colors.darkGray}}>
@@ -136,120 +137,11 @@ const HomeScreen = ({navigation}) => {
           </View>
 <View style={{display:'flex', flexDirection:'column', gap:10}}>
 
-<View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 0,
-              }}>
-              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
-              <Text
-                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
-                15
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
-            </View>
-
-            <View>
-              <Text style={{color: Colors.black, fontSize: 16}}>
-                5:00 pm -- 11:00 pm
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                Crown Isle
-              </Text>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: 5,
-                  alignItems: 'center',
-                }}>
-                <Icon name="circle" color={Colors.pink} size={10}></Icon>
-                <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                  Line Cook | Kitchen
-                </Text>
-              </View>
-            </View>
-          </View>
-
-          <View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 0,
-              }}>
-              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
-              <Text
-                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
-                15
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
-            </View>
-
-            <View>
-              <Text style={{color: Colors.black, fontSize: 16}}>
-                5:00 pm -- 11:00 pm
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                Crown Isle
-              </Text>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: 5,
-                  alignItems: 'center',
-                }}>
-                <Icon name="circle" color={Colors.pink} size={10}></Icon>
-                <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                  Line Cook | Kitchen
-                </Text>
-              </View>
-            </View>
-          </View>
+  <ShiftCard 
 
 
-          <View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 0,
-              }}>
-              <Text style={{color: Colors.darkBlue, fontSize: 16}}>Tue</Text>
-              <Text
-                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
-                15
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 14}}>OCT</Text>
-            </View>
+  ></ShiftCard>
 
-            <View>
-              <Text style={{color: Colors.black, fontSize: 16}}>
-                5:00 pm -- 11:00 pm
-              </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                Crown Isle
-              </Text>
-              <View
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  gap: 5,
-                  alignItems: 'center',
-                }}>
-                <Icon name="circle" color={Colors.pink} size={10}></Icon>
-                <Text style={{color: Colors.lessGray, fontSize: 16}}>
-                  Line Cook | Kitchen
-                </Text>
-              </View>
-            </View>
-          </View>
 
 
 </View>

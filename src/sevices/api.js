@@ -117,7 +117,6 @@ export const addRoles = async (userId, departmentId, roleName) =>{
   export const getShifts = async(userId) =>{
     try {
       const response = await apiService.get(`/api/${userId}/shifts`);
-      console.log(response.data);
       return response.data;
      
     }

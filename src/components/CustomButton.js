@@ -2,6 +2,8 @@ import React from 'react';
 import {TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import Colors from '../constants/colors';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 export const CustomButton = ({
   title,
@@ -82,5 +84,49 @@ export const DepartmentButton = ({IconName, IconColor,  IconBackgroundColor, tit
           <Text style={{color:Colors.darkGray}}>{title}</Text>
         </View>
       </TouchableOpacity>
+  );
+};
+
+
+export const ShiftCard = ({start, end, day, dayInNum, month,place , role, department}) =>{
+
+  return (
+    <View style={{display: 'flex', flexDirection: 'row', gap: 25}}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 0,
+              }}>
+              <Text style={{color: Colors.darkBlue, fontSize: 16}}>{day}</Text>
+              <Text
+                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
+                {dayInNum}
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 14}}>{month}</Text>
+            </View>
+
+            <View>
+              <Text style={{color: Colors.black, fontSize: 16}}>
+                {start} -- {end}
+              </Text>
+              <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                {place}
+              </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: 5,
+                  alignItems: 'center',
+                }}>
+                <Icon name="circle" color={Colors.pink} size={10}></Icon>
+                <Text style={{color: Colors.lessGray, fontSize: 16}}>
+                  {role} | {department}
+                </Text>
+              </View>
+            </View>
+          </View>
   );
 };
