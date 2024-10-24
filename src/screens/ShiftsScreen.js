@@ -71,7 +71,7 @@ const ShiftGroup = ({dateGroup}) => {
 };
 
 const ShiftsScreen = () => {
-  const {userId} = useContext(AuthContext);
+  const {userId, emplyFlag} = useContext(AuthContext);
   const navigation = useNavigation();
   const [shifts, setShifts] = useState([]);
   const [organizedShifts, setOrganizedShifts] = useState([]);
@@ -140,12 +140,14 @@ const ShiftsScreen = () => {
         {organizedShifts.map((dateGroup) => (
           <ShiftGroup key={dateGroup.date} dateGroup={dateGroup} />
         ))}
-
-        <TouchableOpacity
-          style={styles.createButton}
-          onPress={() => navigation.navigate('CreateShifts')}>
-          <Text style={styles.createButtonText}>Create new shift</Text>
-        </TouchableOpacity>
+       {!emplyFlag && (
+  <TouchableOpacity
+    style={styles.createButton}
+    onPress={() => navigation.navigate('CreateShifts')}
+  >
+    <Text style={styles.createButtonText}>Create new shift</Text>
+  </TouchableOpacity>
+       )}
       </ScrollView>
     </View>
   );

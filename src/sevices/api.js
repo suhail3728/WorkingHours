@@ -24,6 +24,7 @@ export const createUser = async (userData) => {
         address: userData.address,
         businessType: userData.businessType,
         numberOfEmployees: userData.numberOfEmployees,
+        businessId: userData.business_id,
       });
 
     return {
@@ -163,6 +164,18 @@ export const verifyUser = async (userId, email) => {
     return response.data;
   } catch (error) {
     console.error('Error verifying user:', error);
+    throw error;
+  }
+};
+
+export const getEmplyShifts = async (id, name) => {
+  try {
+    const response = await apiService.get(`/api/${id}/emplyShifts`, {
+      params: { name }  
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Failed to get shifts', error);
     throw error;
   }
 };

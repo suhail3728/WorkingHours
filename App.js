@@ -17,15 +17,15 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in
+
         setIsAuthenticated(true);
       } else {
-        // User is signed out
+  
         setIsAuthenticated(false);
       }
     });
   
-    // Cleanup subscription on unmount
+    
     return unsubscribe;
   }, []);
 

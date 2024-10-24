@@ -11,6 +11,7 @@ import NewUserScreen from '../screens/NewUserScreen';
 import UserCreation4 from '../screens/UserCreation4';
 import EmployeeLogin from '../screens/EmployeeLogin';
 import HomeScreen from '../screens/Home';
+import EmployeeCreate from '../screens/EmployeeCreate';
 const Stack = createStackNavigator();
 const AuthStack = () => {
   return (
@@ -18,6 +19,7 @@ const AuthStack = () => {
                     <Stack.Screen name="Welcome" component={WelcomeScreen}  options={{headerShown: false}} />
                     <Stack.Screen name="NewUser" component={NewUserScreen}  options={{headerShown: false}} />
                     <Stack.Screen name="Employee" component={EmployeeLogin}  options={{headerShown: false}} />
+                    <Stack.Screen name="EmplyCreate" component={EmployeeCreate}  options={{headerShown: false}} />
                     <Stack.Screen name="HomeScreen" component={HomeScreen}  options={{headerShown: false}} />
 
                     <Stack.Screen name="UserCreation1" component={UserCreation1}       options={{ title: 'Step 1 of 4'}} />

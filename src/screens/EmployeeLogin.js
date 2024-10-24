@@ -32,7 +32,7 @@ const EmployeeLogin = () => {
       const response = await verifyUser(loginKey, email);
       console.log(response);
       setEmplyObject(response);
-      navigation.navigate('HomeScreen');
+      navigation.navigate('EmplyCreate', {loginKey});
 
       // if (response && response.success) {
       //   await AsyncStorage.multiSet([
@@ -84,7 +84,7 @@ const EmployeeLogin = () => {
       onPress={handleLogin}
       borderColor={Colors.orange}
       backgroundColor={Colors.orange}
-      title={'Login'}
+      title={'Verify'}
       textColor={Colors.pureWhite}
   
     

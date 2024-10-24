@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import {signOut} from 'firebase/auth';
 import {auth} from '../config/firebase';
-import {getUser} from '../sevices/api';
+import {getEmplyShifts, getShifts, getUser} from '../sevices/api';
 import Colors from '../constants/colors';
 import {AuthContext} from '../navigation/AuthContext';
 import { ShiftCard } from '../components/CustomButton';
@@ -27,10 +27,13 @@ const HomeScreen = ({navigation}) => {
   const {userId} = useContext(AuthContext);
   const {setEmplyObject} = useContext(AuthContext);
   const {setUserId} = useContext(AuthContext);
+  const {emplyFlag, setEmplyFlag} = useContext(AuthContext)
 
   const {emplyObject} = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [businessId, setBusinessId] = useState('');
+  const [shifts, setShifts ] = useState([]);
   const handleLogout = () => {
     setUserId(null)
     setEmplyObject(null);
@@ -48,25 +51,73 @@ const HomeScreen = ({navigation}) => {
       });
   };
 
-  useEffect(() => {
-    const loadUserData = async () => {
-      try {
-        console.log(userId);
-        const data = await getUser(userId);
-        console.log(data);
-        setUserData(data);
-      } catch (error) {
-        console.error('Error loading user data:', error);
-      } finally {
-        setLoading(false); // Stop loading after attempting to load data
+  const loadEmplyShifts = async (id, name) => {
+    if (!id || !name) {
+      console.error('Missing required parameters:', { id, name });
+      return;
+    }
+  
+    try {
+      console.log('Fetching shifts with:', { id, name });
+      const response = await getEmplyShifts(id, name);
+      if (response && response.shifts) {
+        setShifts(response.shifts);
+        console.log('Shifts loaded:', response.shifts);
+      } else {
+        console.log('No shifts found or invalid response');
       }
-    };
+    } catch (error) {
+      console.error('Failed to get the employee shifts:', error);
+    }
+  };
 
+
+useEffect(() => {
+  const loadUserData = async () => {
+    try {
+      console.log('Loading user with ID:', userId);
+      const data = await getUser(userId);
+      console.log('User data:', data);
+      setBusinessId(data.business_id);
+      setUserData(data);
+      
+      if (data.business_id !== 0) {
+        setEmplyFlag(true);
+        setBusinessId(data.business_id);
+ 
+      } else {
+        setEmplyFlag(false);
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (userId) {  
     loadUserData();
-  }, [userId]);
+  }
+}, [userId]);
+
+
+useEffect(() => {
+  const loadShiftsData = async () => {
+    if (businessId && userData?.name) {  
+      try {
+        console.log('Loading shifts for business:', businessId, 'name:', userData.name);
+        await loadEmplyShifts(businessId, userData.name);
+      } catch (error) {
+        console.error('Error loading shifts:', error);
+      }
+    }
+  };
+
+  loadShiftsData();
+}, [businessId, userData]); 
 
   if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />; // Show loading indicator
+    return <ActivityIndicator size="large" color="#0000ff" />; 
   }
 
   return (
@@ -105,7 +156,7 @@ const HomeScreen = ({navigation}) => {
           </View>
           <Text style={styles.title}>
             You have the day off--{'\n'}stay safe!
-            <Text>{emplyObject? emplyObject.employeeData.name: 'i dont know why'}</Text>
+            <Text>{emplyObject? emplyObject.employeeData.name: ''}</Text>
           </Text>
 
           <TouchableOpacity

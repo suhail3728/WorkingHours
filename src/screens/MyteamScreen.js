@@ -41,6 +41,7 @@ const MyTeamScreen = () => {
         data={employees}
         keyExtractor={item => item.id}
         renderItem={({item})=>(
+          
 
             <CustomIconButton
             name={'person'}
