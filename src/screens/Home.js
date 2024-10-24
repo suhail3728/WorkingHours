@@ -34,6 +34,24 @@ const HomeScreen = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [businessId, setBusinessId] = useState('');
   const [shifts, setShifts ] = useState([]);
+
+
+const formatTime = (dateString) => {
+  return new Date(dateString).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  });
+};
+
+
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  return {
+    day: date.toLocaleString('en-US', { weekday: 'short' }),
+    dayInNum: date.getDate()
+  };
+};
   const handleLogout = () => {
     setUserId(null)
     setEmplyObject(null);
@@ -116,9 +134,7 @@ useEffect(() => {
   loadShiftsData();
 }, [businessId, userData]); 
 
-  if (loading) {
-    return <ActivityIndicator size="large" color="#0000ff" />; 
-  }
+
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -196,16 +212,22 @@ useEffect(() => {
           </View>
 <View style={{display:'flex', flexDirection:'column', gap:10}}>
 
-  <ShiftCard 
-  day={"Monday"}
-  dayInNum={15}
-  department={"Kitchen"}
-  end={"7 PM"}
- start={"12 PM"}
- role={"prep/dish"}
- place={"Crown Isle"}
-
-  ></ShiftCard>
+{shifts && shifts.length > 0 ? (
+      shifts.map((shift, index) => (
+        <ShiftCard
+          key={shift.shift_id}
+          day={formatDate(shift.date).day}
+          dayInNum={formatDate(shift.date).dayInNum}
+          department={shift.department?.name || "Not specified"}
+          start={formatTime(shift.start)}
+          end={formatTime(shift.end)}
+          role={shift.role?.name || "Not specified"}
+          place={userData?.business_name || "Eggs 'n cheese"}
+        />
+      ))
+    ) : (
+      <Text style={styles.noShiftsText}>No shifts found</Text>
+    )}
 
 
 
