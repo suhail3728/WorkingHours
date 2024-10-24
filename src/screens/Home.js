@@ -49,6 +49,7 @@ const formatDate = (dateString) => {
   const date = new Date(dateString);
   return {
     day: date.toLocaleString('en-US', { weekday: 'short' }),
+    month: date.toLocaleString('en-US', { month: 'short' }).toUpperCase() ,
     dayInNum: date.getDate()
   };
 };
@@ -218,6 +219,7 @@ useEffect(() => {
         <ShiftCard
           key={shift.shift_id}
           day={formatDate(shift.date).day}
+          month={formatDate(shift.date).month}
           dayInNum={formatDate(shift.date).dayInNum}
           department={shift.department?.name || "Not specified"}
           start={formatTime(shift.start)}

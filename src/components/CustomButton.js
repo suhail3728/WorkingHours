@@ -101,12 +101,12 @@ export const ShiftCard = ({start, end, day, dayInNum, month,place , role, depart
                 alignItems: 'center',
                 gap: 0,
               }}>
-              <Text style={{color: Colors.darkBlue, fontSize: 16}}>{day}</Text>
+              <Text style={{color: Colors.darkBlue, fontSize: 13}}>{day}</Text>
               <Text
-                style={{color: Colors.black, fontSize: 22, fontWeight: 'bold'}}>
+                style={{color: Colors.black, fontSize: 18, fontWeight: 'bold'}}>
                 {dayInNum}
               </Text>
-              <Text style={{color: Colors.lessGray, fontSize: 14}}>{month}</Text>
+              <Text style={{color: Colors.lessGray, fontSize: 13}}>{month}</Text>
             </View>
 
             <View>
