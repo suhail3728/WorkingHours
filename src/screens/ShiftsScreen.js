@@ -140,14 +140,14 @@ const ShiftsScreen = () => {
         {organizedShifts.map((dateGroup) => (
           <ShiftGroup key={dateGroup.date} dateGroup={dateGroup} />
         ))}
-       {!emplyFlag && (
+     
   <TouchableOpacity
     style={styles.createButton}
     onPress={() => navigation.navigate('CreateShifts')}
   >
     <Text style={styles.createButtonText}>Create new shift</Text>
   </TouchableOpacity>
-       )}
+      
       </ScrollView>
     </View>
   );

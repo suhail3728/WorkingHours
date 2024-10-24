@@ -57,6 +57,7 @@ const CreateShifts = () => {
         start: startTime,
         end: endTime,
         employee: selectedEmployee,
+        place: user.business,
       });
 
       console.log('shift published', response);

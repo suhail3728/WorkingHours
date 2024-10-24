@@ -55,6 +55,7 @@ const formatDate = (dateString) => {
   const handleLogout = () => {
     setUserId(null)
     setEmplyObject(null);
+    setEmplyFlag(null);
     signOut(auth)
    
       .then(() => {
@@ -222,7 +223,7 @@ useEffect(() => {
           start={formatTime(shift.start)}
           end={formatTime(shift.end)}
           role={shift.role?.name || "Not specified"}
-          place={userData?.business_name || "Eggs 'n cheese"}
+          place={shift.place || "Eggs 'n cheese"}
         />
       ))
     ) : (

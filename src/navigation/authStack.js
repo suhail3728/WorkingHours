@@ -20,7 +20,6 @@ const AuthStack = () => {
                     <Stack.Screen name="NewUser" component={NewUserScreen}  options={{headerShown: false}} />
                     <Stack.Screen name="Employee" component={EmployeeLogin}  options={{headerShown: false}} />
                     <Stack.Screen name="EmplyCreate" component={EmployeeCreate}  options={{headerShown: false}} />
-                    <Stack.Screen name="HomeScreen" component={HomeScreen}  options={{headerShown: false}} />
 
                     <Stack.Screen name="UserCreation1" component={UserCreation1}       options={{ title: 'Step 1 of 4'}} />
                     <Stack.Screen name="UserCreation2" component={UserCreation2}       options={{ title: 'Step 2 of 4'}} />
