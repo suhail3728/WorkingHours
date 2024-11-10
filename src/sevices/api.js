@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { reporter } from '../../metro.config';
-const API_URL = 'http://192.168.0.12:5000/';
+const API_URL = ' http://192.168.0.21:5000/';
+// const API_URL = 'https://perfectsky.pythonanywhere.com/';
 
 const apiService = axios.create({
   baseURL: API_URL,
