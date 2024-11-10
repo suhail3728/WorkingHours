@@ -61,10 +61,7 @@ const formatDate = (dateString) => {
    
       .then(() => {
         console.log(`User signed out ${userData?.email}`);
-        navigation.reset({
-          index: 0,
-          routes: [{name: 'Welcome'}],
-        });
+        
       })
       .catch(error => {
         console.error('Error signing out: ', error);
