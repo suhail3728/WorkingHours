@@ -10,6 +10,7 @@ import NewUserScreen from '../screens/NewUserScreen';
 import UserCreation4 from '../screens/UserCreation4';
 import EmployeeLogin from '../screens/EmployeeLogin';
 import EmployeeCreate from '../screens/EmployeeCreate';
+import Colors from '../constants/colors';
 const Stack = createStackNavigator();
 const AuthStack = () => {
   return (
@@ -22,9 +23,15 @@ const AuthStack = () => {
                     <Stack.Screen name="UserCreation2" component={UserCreation2}       options={{ title: 'Step 2 of 4'}} />
                     <Stack.Screen name="UserCreation3" component={UserCreation3}       options={{ title: 'Step 3 of 4'}} />
                     <Stack.Screen name="UserCreation4" component={UserCreation4}       options={{ title: 'Step 4 of 4'}} />
-
-
-      <Stack.Screen name="SignIn" component={SignInScreen} initialParams={{ email: null }}/>
+                    <Stack.Screen name="SignIn" component={SignInScreen} initialParams={{ email: null }} 
+                    options={{   
+                    headerTitle: '',
+                    headerStyle: {
+                    backgroundColor: Colors.welcomeScreenBg,
+                    },
+                    headerTintColor: Colors.black,
+                    }}
+                    />
     </Stack.Navigator>
   );
 };
