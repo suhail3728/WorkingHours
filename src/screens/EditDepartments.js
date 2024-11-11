@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
 import Colors from '../constants/colors';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import {getUser, getDepartments, getRoles} from '../sevices/api';
 import {DepartmentButton} from '../components/CustomButton';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlatList, ScrollView} from 'react-native-gesture-handler';
 
 const EditDepartments = ({route}) => {
   const {userId} = route.params;
@@ -46,6 +46,8 @@ const EditDepartments = ({route}) => {
   );
 
   return (
+    <SafeAreaView>
+      <ScrollView>
     <View>
        
       <DepartmentButton
@@ -84,6 +86,8 @@ const EditDepartments = ({route}) => {
         )}
       />
     </View>
+    </ScrollView>
+    </SafeAreaView>
   );
 };
 

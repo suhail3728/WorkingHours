@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image,  StyleSheet} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {View, Text, Image,  StyleSheet, ActivityIndicator} from 'react-native';
 import Colors from '../constants/colors';
 
 import {CustomIconButton,CustomButton} from '../components/CustomButton';
@@ -7,6 +7,24 @@ import {brand} from '../constants/branding';
 
 
 const WelcomeScreen = ({navigation}) => {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(()=>{
+    setTimeout(()=>{
+
+      setLoading(false);
+
+    },1000)
+  });
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.white }}>
+        <ActivityIndicator size="large" color= {Colors.orange} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
        

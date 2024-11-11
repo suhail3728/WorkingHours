@@ -23,7 +23,7 @@ const SignInScreen = ({navigation}) => {
     console.log(`User signed in:${(user.uid)}`);
     setUserId(user.uid);
 
-    navigation.navigate('HomeScreen');
+ 
     
     
   };

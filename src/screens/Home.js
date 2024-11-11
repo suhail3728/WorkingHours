@@ -70,23 +70,41 @@ const formatDate = (dateString) => {
 
   const loadEmplyShifts = async (id, name) => {
     if (!id || !name) {
-      console.error('Missing required parameters:', { id, name });
-      return;
+        console.error('Missing required parameters:', { id, name });
+        return;
     }
-  
+    
     try {
-      console.log('Fetching shifts with:', { id, name });
-      const response = await getEmplyShifts(id, name);
-      if (response && response.shifts) {
-        setShifts(response.shifts);
-        console.log('Shifts loaded:', response.shifts);
-      } else {
-        console.log('No shifts found or invalid response');
-      }
+        console.log('Fetching shifts with:', { id, name });
+        
+        // Add a check for valid ID format if needed
+        if (typeof id !== 'string' || id.trim() === '') {
+            throw new Error('Invalid ID format');
+        }
+        
+        const response = await getEmplyShifts(id, name);
+        console.log('Raw API response:', response); // Debug log
+        
+        if (response && response.shifts) {
+            if (Array.isArray(response.shifts)) {
+                setShifts(response.shifts);
+                console.log('Shifts loaded:', response.shifts);
+            } else {
+                console.error('Shifts data is not an array:', response.shifts);
+            }
+        } else {
+            console.log('No shifts found or invalid response structure:', response);
+            setShifts([]); // Reset to empty array if no valid data
+        }
     } catch (error) {
-      console.error('Failed to get the employee shifts:', error);
+        console.error('Failed to get the employee shifts:', error);
+        // You might want to set an error state here
+        setShifts([]);
     }
-  };
+};
+
+// Add type checking to the API service call
+
 
 
 useEffect(() => {
@@ -138,8 +156,11 @@ useEffect(() => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" backgroundColor={Colors.blue} />
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView}
+       contentContainerStyle={styles.scrollViewContent}
+      >
   
+        <View style={{flex:1}}>
         <View style={styles.header}>
           <View style={styles.greeting}>
             <View style={styles.greetingCard}>
@@ -238,6 +259,8 @@ useEffect(() => {
         <View>
           <Text style={styles.text}>Hey </Text>
         </View>
+        </View>
+       
       </ScrollView>
     </SafeAreaView>
   );
@@ -245,12 +268,16 @@ useEffect(() => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
+    flex:1,
+ 
     backgroundColor: Colors.white,
   },
 
+  scrollViewContent: {
+   
+  },
   scrollView: {
-    flex: 1,
+  
     backgroundColor: Colors.blue,
     padding: 30,
   },
@@ -261,10 +288,10 @@ const styles = StyleSheet.create({
     // header sections starts
   },
   header: {
-    height: height * 0.5,
+ marginBottom:50,
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
+ 
     backgroundColor: Colors.blue,
   },
 
@@ -339,13 +366,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  //header section ends
-
-  // shift details section
   shiftDetails: {
-    flex: 1,
     backgroundColor: Colors.pureWhite,
-    height: height * 0.6,
+
     margin: -30,
     padding: 30,
   },
