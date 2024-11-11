@@ -3,6 +3,8 @@ import {View, TextInput, Button, Text, StyleSheet} from 'react-native';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 import { AuthContext } from '../navigation/AuthContext';
+import { CustomButton } from '../components/CustomButton';
+import Colors from '../constants/colors';
 
 
 const SignInScreen = ({navigation}) => {
@@ -45,7 +47,12 @@ const SignInScreen = ({navigation}) => {
         secureTextEntry
       />
       {error ? <Text>{error}</Text> : null}
-      <Button title="Sign In" onPress={handleSignIn} />
+      <CustomButton
+        title="Log In"
+        backgroundColor={Colors.green}
+        borderColor={Colors.welcomeScreenBg}
+        textColor={Colors.welcomeScreenBg}
+        onPress={()=> handleSignIn}></CustomButton>
      
     </View>
   );
