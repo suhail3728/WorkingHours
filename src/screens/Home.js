@@ -257,7 +257,7 @@ useEffect(() => {
           <Button title="Logout" onPress={handleLogout} />
         </View>
         <View>
-          <Text style={styles.text}>Hey </Text>
+          <Text style={styles.text}>Hey there </Text>
         </View>
         </View>
        
@@ -268,7 +268,6 @@ useEffect(() => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex:1,
  
     backgroundColor: Colors.white,
   },
@@ -279,7 +278,7 @@ const styles = StyleSheet.create({
   scrollView: {
   
     backgroundColor: Colors.blue,
-    padding: 30,
+    paddingHorizontal:30,
   },
 
   text: {
@@ -367,9 +366,9 @@ const styles = StyleSheet.create({
   },
 
   shiftDetails: {
-    backgroundColor: Colors.pureWhite,
-
+    backgroundColor: Colors.gray,
     margin: -30,
+
     padding: 30,
   },
 });
