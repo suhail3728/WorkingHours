@@ -19,7 +19,7 @@ import {auth} from '../config/firebase';
 import {getEmplyShifts, getShifts, getUser} from '../sevices/api';
 import Colors from '../constants/colors';
 import {AuthContext} from '../navigation/AuthContext';
-import { ShiftCard } from '../components/CustomButton';
+import { CustomButton, ShiftCard } from '../components/CustomButton';
 
 const {height} = Dimensions.get('window');
 
@@ -254,11 +254,15 @@ useEffect(() => {
 
 </View>
          
-          <Button title="Logout" onPress={handleLogout} />
+         <CustomButton
+         backgroundColor={Colors.green}
+         textColor={Colors.pureWhite}
+         borderColor={Colors.green}
+         title={'Logout'}
+         onPress={handleLogout}
+         ></CustomButton>
         </View>
-        <View>
-          <Text style={styles.text}>Hey there </Text>
-        </View>
+       
         </View>
        
       </ScrollView>
