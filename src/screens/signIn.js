@@ -33,7 +33,7 @@ const SignInScreen = ({navigation}) => {
         <Icon
           name="email-outline"
           size={20}
-          color={Colors.darkGray}
+          color={Colors.black}
           style={styles.icon}
         />
         <TextInput
@@ -70,7 +70,12 @@ const SignInScreen = ({navigation}) => {
         borderColor={Colors.welcomeScreenBg}
         textColor={Colors.welcomeScreenBg}
         onPress={handleSignIn}></CustomButton>
- 
+        <View style={styles.or}>
+        <View style={styles.smallBorder}></View>
+        <Text style={{color:Colors.darkGray, fontWeight:'bold',}}>or</Text>
+        <View style={styles.smallBorder}></View>
+        </View>
+        
     </View>
   );
 };
@@ -110,6 +115,21 @@ const styles = StyleSheet.create({
   textInput: {
     fontSize: 16,
     color: Colors.darkGray,
+  },
+
+  or: {
+    width: 260,
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    gap:20,
+  },
+  smallBorder:{
+
+  flex:1,
+    borderBottomWidth:1.2,
+    borderColor:Colors.border,
+
   },
   text: {
     margin: 10,
