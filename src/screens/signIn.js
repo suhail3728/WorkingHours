@@ -32,6 +32,7 @@ const SignInScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Text>WorkngHours</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -63,6 +64,9 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container:{
    backgroundColor: Colors.welcomeScreenBg,
+   display: 'flex',
+   flexDirection:'column',
+   alignItems:'center',
   },
   text: {
     margin: 10,
