@@ -5,6 +5,7 @@ import {auth} from '../config/firebase';
 import { AuthContext } from '../navigation/AuthContext';
 import { CustomButton } from '../components/CustomButton';
 import Colors from '../constants/colors';
+import Icon from 'react-native-vector-icons/MaterialIcons'; 
 
 
 const SignInScreen = ({navigation}) => {
@@ -35,18 +36,28 @@ const SignInScreen = ({navigation}) => {
       <Text style={styles.heading}>WorkngHours</Text>
       <TextInput
         placeholder="Email"
+        placeholderTextColor={Colors.darkGray}
         value={email}
-        style={styles.text}
+        style={styles.textInput}
         onChangeText={setEmail}
         keyboardType="email-address"
       />
-      <TextInput
-        placeholder="Password"
-        value={password}
-        style={styles.text}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
+     <View style={styles.inputContainer}>
+  <Icon 
+    name="lock" 
+    size={20} 
+    color="#666"
+    style={styles.icon}
+  />
+  <TextInput
+    placeholder="Enter your password"
+    placeholderTextColor= {Colors.darkGray}
+    value={password}
+    style={styles.textInput}
+    onChangeText={setPassword}
+    secureTextEntry
+  />
+</View>
       {error ? <Text>{error}</Text> : null}
       <CustomButton
         title="Log In"
@@ -62,19 +73,33 @@ const SignInScreen = ({navigation}) => {
 export default SignInScreen;
 
 const styles = StyleSheet.create({
-  
-  container:{
+
+  container: {
    backgroundColor: Colors.welcomeScreenBg,
-   display: 'flex',
-   flexDirection:'column',
    alignItems:'center',
   },
-  heading:{
-    
+  heading: {
     color:Colors.black,
     fontWeight:'900',
     fontSize:37,
     marginBottom:70,
+
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,  
+    borderColor: Colors.black,
+    backgroundColor: Colors.green,
+   width:248,
+   height:50,
+  },
+
+  textInput: {
+    paddingVertical: 15,
+    fontSize: 16,
+    paddingLeft: 0,
+
 
   },
   text: {
