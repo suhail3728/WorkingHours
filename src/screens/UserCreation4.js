@@ -1,5 +1,5 @@
 import React, { useState,  useContext } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import Colors from '../constants/colors';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
@@ -22,12 +22,14 @@ const UserCreation4 = ({ navigation, route }) => {
   const [password, setPassword] = useState('');
   const isNextButtonEnabled = email.trim() !== '' && password.trim() !== '';
   const { setUserId } = useContext(AuthContext);
+  const [isLoading, setLoading] = useState(false);
 
 
 
 
   const handleCreateUser = async () => {
     try {
+      setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(auth,email, password);
       const user = userCredential.user;
       console.log('User Created:', user.email, user.uid);
@@ -35,7 +37,7 @@ const UserCreation4 = ({ navigation, route }) => {
 
    
       
-      // Navigate to Welcome screen
+
      
       const userData = {
         name,
@@ -51,7 +53,7 @@ const UserCreation4 = ({ navigation, route }) => {
       };
 
 await createUser(userData);
-      navigation.navigate('HomeScreen');
+
 
     } catch (error) {
       console.error('Error creating user:', error);
@@ -62,7 +64,13 @@ await createUser(userData);
     }
 
    
-  
+    if (isLoading) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.white }}>
+          <ActivityIndicator size="large" color= {Colors.orange} />
+        </View>
+      );
+    }
 
   return (
     <View style={styles.container}>
