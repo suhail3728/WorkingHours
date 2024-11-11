@@ -191,7 +191,8 @@ useEffect(() => {
             </TouchableOpacity>
           </View>
           <Text style={styles.title}>
-            You have the day off--{'\n'}stay safe!
+            {shifts.length > 0 ? ` You have\none shift today.`: `You have the day off--\nstay safe!`}
+           
             <Text>{emplyObject? emplyObject.employeeData.name: ''}</Text>
           </Text>
 
