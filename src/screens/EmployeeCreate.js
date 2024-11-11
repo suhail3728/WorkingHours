@@ -1,34 +1,34 @@
-import React, {useState, useContext} from 'react';
-import {View, TextInput, StyleSheet, Dimensions, Button} from 'react-native';
+import React, {useState, useContext, useEffect} from 'react';
+import {View, TextInput, StyleSheet, Dimensions, Button, ActivityIndicator} from 'react-native';
 import Colors from '../constants/colors';
 import {CustomButton} from '../components/CustomButton';
 import {createUser} from '../sevices/api';
-import {AuthContext} from '../navigation/AuthContext';
-import {useNavigation, useRoute} from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 const {height} = Dimensions.get('window');
 
 
-const EmployeeCreate = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const {loginKey} = route.params;
-  const {emplyObject} = useContext(AuthContext);
+const EmployeeCreate = ({navigation,route}) => {
+  const {loginKey,emplyObject} = route.params;
+
   const [password, setPassword] =useState('');
   const [email, setEmail] = useState('');
-  const { setUserId } = useContext(AuthContext);
+  const [isLoading, setLoading] = useState(false);
 
 
+  useEffect(() => {
+
+    setEmail(emplyObject.employeeData.email);
+   
+  }, [emplyObject]);
   const handleCreateUser = async () => {
-    try {
+    setLoading(true);
 
-        setEmail(emplyObject.employeeData.email);
+    try {
 
       const userCredential = await createUserWithEmailAndPassword(auth,email, password);
       const user = userCredential.user;
       console.log('User Created:', user.email, user.uid);
-      setUserId(user.uid);
      
       const userData = {
         name: emplyObject.employeeData.name,
@@ -42,7 +42,7 @@ const EmployeeCreate = () => {
       };
 
 await createUser(userData);
-      navigation.navigate('HomeScreen');
+     
 
     } catch (error) {
       console.error('Error creating user:', error);
@@ -51,7 +51,16 @@ await createUser(userData);
 
   
     };
+
+    if (isLoading) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.white }}>
+          <ActivityIndicator size="large" color= {Colors.orange} />
+        </View>
+      );
+    }
   return (
+
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput

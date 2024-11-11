@@ -28,7 +28,10 @@ const Main = () => {
           // Set the user ID in context before logging it
           setUserId(user.uid);
           console.log('User is signed in:', user.uid);
-          setIsAuthenticated(true);
+          setTimeout(() => {
+            setIsAuthenticated(true);
+          }, 1000); 
+          
         } else {
           console.log('User is signed out');
           setIsAuthenticated(false);

@@ -18,8 +18,6 @@ const EmployeeLogin = () => {
   const [loginKey, setLoginKey] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const {setEmplyObject} = useContext(AuthContext);
-
   const handleLogin = async () => {
     try {
       setError('');
@@ -30,9 +28,14 @@ const EmployeeLogin = () => {
       }
 
       const response = await verifyUser(loginKey, email);
-      console.log(response);
-      setEmplyObject(response);
-      navigation.navigate('EmplyCreate', {loginKey});
+      if (response) {
+        console.log(response); 
+        navigation.navigate('EmplyCreate', {loginKey, emplyObject: response});
+      } 
+        else { setError('Login failed');
+
+         }
+     
 
       // if (response && response.success) {
       //   await AsyncStorage.multiSet([
