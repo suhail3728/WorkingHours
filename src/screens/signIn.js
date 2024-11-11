@@ -31,7 +31,7 @@ const SignInScreen = ({navigation}) => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         placeholder="Email"
         value={email}
@@ -61,6 +61,9 @@ const SignInScreen = ({navigation}) => {
 export default SignInScreen;
 
 const styles = StyleSheet.create({
+  container:{
+   backgroundColor: Colors.welcomeScreenBg,
+  },
   text: {
     margin: 10,
     padding: 10,
