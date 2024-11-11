@@ -3,7 +3,7 @@ import {View, TextInput, Button, Text, StyleSheet} from 'react-native';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 import {AuthContext} from '../navigation/AuthContext';
-import {CustomButton} from '../components/CustomButton';
+import {CustomButton, CustomIconButton} from '../components/CustomButton';
 import Colors from '../constants/colors';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -75,7 +75,10 @@ const SignInScreen = ({navigation}) => {
         <Text style={{color:Colors.darkGray, fontWeight:'bold',}}>or</Text>
         <View style={styles.smallBorder}></View>
         </View>
-        
+        <CustomIconButton
+        name={'logo-google'}
+        title={'Sign in with Google'}
+        ></CustomIconButton>
     </View>
   );
 };
