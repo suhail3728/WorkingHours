@@ -63,12 +63,14 @@ const SignInScreen = ({navigation}) => {
         />
       </View>
       {error ? <Text>{error}</Text> : null}
+      <Text style={{color:Colors.darkGray, width:250,  fontWeight:'600', fontSize:15, marginVertical:35}}>Forgot Password?</Text>
       <CustomButton
         title="Log In"
         backgroundColor={Colors.green}
         borderColor={Colors.welcomeScreenBg}
         textColor={Colors.welcomeScreenBg}
         onPress={handleSignIn}></CustomButton>
+ 
     </View>
   );
 };
@@ -77,9 +79,11 @@ export default SignInScreen;
 
 const styles = StyleSheet.create({
   container: {
+    alignContent:'center',
     marginTop:50,
     backgroundColor: Colors.welcomeScreenBg,
     alignItems: 'center',
+   
   },
   heading: {
     color: Colors.darkGray,

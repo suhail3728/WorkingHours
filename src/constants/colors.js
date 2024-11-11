@@ -18,6 +18,7 @@ const Colors = {
     darkerGreen:'#3BBCA6',
     yellow:'#F3F1C8',
     darkerBlue: '#7081B9',
+    darkerGray: '#444442',
     borderLight: ' #D3D3D3',
     
     
