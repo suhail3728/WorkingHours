@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, Button, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, TextInput, Button, Text, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 import {AuthContext} from '../navigation/AuthContext';
@@ -12,8 +12,9 @@ const SignInScreen = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const {setUserId} = useContext(AuthContext);
-
+  const [isLoading, setIsLoading] = useState(false);
   const handleSignIn = async () => {
+    setIsLoading(true);
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -24,6 +25,14 @@ const SignInScreen = ({navigation}) => {
     console.log(`User signed in:${user.uid}`);
     setUserId(user.uid);
   };
+  
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.welcomeScreenBg }}>
+        <ActivityIndicator size="large" color= {Colors.orange} />
+      </View>
+    );
+  }
 
   return (
    <View style={{flex:1, backgroundColor:Colors.welcomeScreenBg}}>
