@@ -26,7 +26,8 @@ const SignInScreen = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+   <View style={{flex:1, backgroundColor:Colors.welcomeScreenBg}}>
+<View style={styles.container}>
       <Text style={styles.heading}>WorkngHours</Text>
       <View style={styles.inputContainer}>
         <Icon
@@ -109,6 +110,8 @@ const SignInScreen = ({navigation}) => {
         iconColor={Colors.darkerBlack}
       />
     </View>
+   </View>
+    
   );
 };
 
