@@ -33,28 +33,29 @@ const SignInScreen = ({navigation}) => {
         <Icon
           name="email-outline"
           size={20}
-          color={Colors.black}
+          color={Colors.darkGray}
           style={styles.icon}
         />
         <TextInput
           placeholder="Email"
-          placeholderTextColor={Colors.black}
+          placeholderTextColor={Colors.darkGray}
           value={email}
           style={styles.textInput}
           onChangeText={setEmail}
        
         />
       </View>
+      <View style={styles.border}></View>
       <View style={styles.inputContainer}>
         <Icon
           name="lock-outline"
           size={20}
-          color={Colors.black}
+          color={Colors.darkGray}
           style={styles.icon}
         />
         <TextInput
           placeholder="Password"
-          placeholderTextColor={Colors.black}
+          placeholderTextColor={Colors.darkGray}
           value={password}
           style={styles.textInput}
           onChangeText={setPassword}
@@ -76,11 +77,12 @@ export default SignInScreen;
 
 const styles = StyleSheet.create({
   container: {
+    marginTop:50,
     backgroundColor: Colors.welcomeScreenBg,
     alignItems: 'center',
   },
   heading: {
-    color: Colors.black,
+    color: Colors.darkGray,
     fontWeight: '900',
     fontSize: 37,
     marginBottom: 70,
@@ -89,17 +91,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    borderBottomWidth: 1,
-    borderColor: Colors.black,
     backgroundColor: Colors.welcomeScreenBg,
     width: 248,
     height: 50,
     gap: 13,
   },
+  border : {
+    width:250,
+    borderBottomWidth:1.2,
+    borderColor:Colors.border,
+
+  },
 
   textInput: {
     fontSize: 16,
-    color: Colors.black,
+    color: Colors.darkGray,
   },
   text: {
     margin: 10,
