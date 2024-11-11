@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, Button, Text, StyleSheet} from 'react-native';
+import {View, TextInput, Button, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 import {AuthContext} from '../navigation/AuthContext';
@@ -29,6 +29,10 @@ const SignInScreen = ({navigation}) => {
    <View style={{flex:1, backgroundColor:Colors.welcomeScreenBg}}>
 <View style={styles.container}>
       <Text style={styles.heading}>WorkngHours</Text>
+      <TouchableOpacity
+      activeOpacity={1}
+      onPress={()=>this.emailInput.focus()}
+      >
       <View style={styles.inputContainer}>
         <Icon
           name="email-outline"
@@ -37,6 +41,7 @@ const SignInScreen = ({navigation}) => {
           style={styles.icon}
         />
         <TextInput
+        ref={(input)=>{this.emailInput = input;}}
           placeholder="Email"
           placeholderTextColor={Colors.darkGray}
           value={email}
@@ -44,7 +49,13 @@ const SignInScreen = ({navigation}) => {
           onChangeText={setEmail}
         />
       </View>
+      </TouchableOpacity>
+     
       <View style={styles.border}></View>
+      <TouchableOpacity
+      activeOpacity={1}
+      onPress={()=>this.passwordInput.focus()}
+      >
       <View style={styles.inputContainer}>
         <Icon
           name="lock-outline"
@@ -53,6 +64,7 @@ const SignInScreen = ({navigation}) => {
           style={styles.icon}
         />
         <TextInput
+        ref={(input)=>this.passwordInput = input}
           placeholder="Password"
           placeholderTextColor={Colors.darkGray}
           value={password}
@@ -61,6 +73,7 @@ const SignInScreen = ({navigation}) => {
           secureTextEntry
         />
       </View>
+      </TouchableOpacity>
       {error ? <Text>{error}</Text> : null}
       <Text
         style={{
