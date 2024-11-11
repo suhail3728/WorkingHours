@@ -14,7 +14,6 @@ const SignInScreen = ({navigation}) => {
   const {setUserId} = useContext(AuthContext);
 
   const handleSignIn = async () => {
-
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -42,7 +41,6 @@ const SignInScreen = ({navigation}) => {
           value={email}
           style={styles.textInput}
           onChangeText={setEmail}
-       
         />
       </View>
       <View style={styles.border}></View>
@@ -63,22 +61,53 @@ const SignInScreen = ({navigation}) => {
         />
       </View>
       {error ? <Text>{error}</Text> : null}
-      <Text style={{color:Colors.darkGray, width:250,  fontWeight:'600', fontSize:15, marginVertical:35}}>Forgot Password?</Text>
+      <Text
+        style={{
+          color: Colors.darkGray,
+          width: 250,
+          fontWeight: '600',
+          fontSize: 15,
+          marginVertical: 35,
+        }}>
+        Forgot Password?
+      </Text>
       <CustomButton
         title="Log In"
         backgroundColor={Colors.green}
         borderColor={Colors.welcomeScreenBg}
         textColor={Colors.welcomeScreenBg}
         onPress={handleSignIn}></CustomButton>
-        <View style={styles.or}>
+      <View style={styles.or}>
         <View style={styles.smallBorder}></View>
-        <Text style={{color:Colors.darkGray, fontWeight:'bold',}}>or</Text>
+        <Text style={{color: Colors.darkGray, fontWeight: 'bold'}}>or</Text>
         <View style={styles.smallBorder}></View>
-        </View>
-        <CustomIconButton
-        name={'logo-google'}
-        title={'Sign in with Google'}
-        ></CustomIconButton>
+      </View>
+      <CustomIconButton
+        name="logo-google"
+        title="Sign in with Google"
+        contentStyle={{
+          marginTop:8,
+          backgroundColor: Colors.white,
+          borderWidth: 1,
+          borderColor: Colors.border,
+          width: 250,
+          borderRadius: 10,
+        }}
+        iconColor= {Colors.darkerBlack}
+      />
+      <CustomIconButton
+        name="logo-apple"
+        title="Sign in with Apple"
+        contentStyle={{
+          marginTop:10,
+          backgroundColor: Colors.white,
+          borderWidth: 1,
+          borderColor: Colors.border,
+          width: 250,
+          borderRadius: 10,
+        }}
+        iconColor={Colors.darkerBlack}
+      />
     </View>
   );
 };
@@ -87,11 +116,10 @@ export default SignInScreen;
 
 const styles = StyleSheet.create({
   container: {
-    alignContent:'center',
-    marginTop:50,
+    alignContent: 'center',
+    marginTop: 50,
     backgroundColor: Colors.welcomeScreenBg,
     alignItems: 'center',
-   
   },
   heading: {
     color: Colors.darkGray,
@@ -108,11 +136,10 @@ const styles = StyleSheet.create({
     height: 50,
     gap: 13,
   },
-  border : {
-    width:250,
-    borderBottomWidth:1.2,
-    borderColor:Colors.border,
-
+  border: {
+    width: 250,
+    borderBottomWidth: 1.2,
+    borderColor: Colors.border,
   },
 
   textInput: {
@@ -122,17 +149,15 @@ const styles = StyleSheet.create({
 
   or: {
     width: 260,
-    display:'flex',
-    flexDirection:'row',
-    alignItems:'center',
-    gap:20,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
   },
-  smallBorder:{
-
-  flex:1,
-    borderBottomWidth:1.2,
-    borderColor:Colors.border,
-
+  smallBorder: {
+    flex: 1,
+    borderBottomWidth: 1.2,
+    borderColor: Colors.border,
   },
   text: {
     margin: 10,
