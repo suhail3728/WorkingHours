@@ -5,7 +5,7 @@ import {auth} from '../config/firebase';
 import {AuthContext} from '../navigation/AuthContext';
 import {CustomButton} from '../components/CustomButton';
 import Colors from '../constants/colors';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SignInScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -14,6 +14,7 @@ const SignInScreen = ({navigation}) => {
   const {setUserId} = useContext(AuthContext);
 
   const handleSignIn = async () => {
+
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -28,14 +29,22 @@ const SignInScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>WorkngHours</Text>
-      <TextInput
-        placeholder="Email"
-        placeholderTextColor={Colors.darkGray}
-        value={email}
-        style={styles.textInput}
-        onChangeText={setEmail}
-        keyboardType="email-address"
-      />
+      <View style={styles.inputContainer}>
+        <Icon
+          name="email-outline"
+          size={20}
+          color={Colors.black}
+          style={styles.icon}
+        />
+        <TextInput
+          placeholder="Email"
+          placeholderTextColor={Colors.black}
+          value={email}
+          style={styles.textInput}
+          onChangeText={setEmail}
+       
+        />
+      </View>
       <View style={styles.inputContainer}>
         <Icon
           name="lock-outline"
@@ -58,7 +67,7 @@ const SignInScreen = ({navigation}) => {
         backgroundColor={Colors.green}
         borderColor={Colors.welcomeScreenBg}
         textColor={Colors.welcomeScreenBg}
-        onPress={() => handleSignIn}></CustomButton>
+        onPress={handleSignIn}></CustomButton>
     </View>
   );
 };
@@ -89,7 +98,8 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    fontSize: 17,
+    fontSize: 16,
+    color: Colors.black,
   },
   text: {
     margin: 10,
