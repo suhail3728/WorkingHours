@@ -4,7 +4,8 @@ import {signInWithEmailAndPassword} from 'firebase/auth';
 import {auth} from '../config/firebase';
 import {AuthContext} from '../navigation/AuthContext';
 import {CustomButton, CustomIconButton} from '../components/CustomButton';
-import Colors from '../constants/colors';
+import {Colors} from '../constants/colors';
+import { CustomButton } from '../components/CustomButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const SignInScreen = ({navigation}) => {
@@ -37,7 +38,7 @@ const SignInScreen = ({navigation}) => {
   return (
    <View style={{flex:1, backgroundColor:Colors.welcomeScreenBg}}>
 <View style={styles.container}>
-      <Text style={styles.heading}>WorkngHours</Text>
+      <Text style={styles.heading}>WorkingHours</Text>
       <TouchableOpacity
       activeOpacity={1}
       onPress={()=>this.emailInput.focus()}
